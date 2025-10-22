@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Velvet Vogue</title>
+    <meta name="description" content="Admin dashboard for managing Velvet Vogue e-commerce platform.">
+    
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Admin Header -->
+    <header class="admin-header" style="background: var(--primary-color); color: white; padding: 1rem 0; position: sticky; top: 0; z-index: 1000;">
+        <div class="container">
+            <div class="admin-navbar" style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="admin-logo">
+                    <a href="dashboard.html" style="color: white; font-size: 1.5rem; font-weight: 600;">
+                        <i class="fas fa-cog"></i> Velvet Vogue Admin
+                    </a>
+                </div>
+                
+                <div class="admin-nav" style="display: flex; align-items: center; gap: 2rem;">
+                    <a href="../index.html" target="_blank" style="color: white; opacity: 0.8;">
+                        <i class="fas fa-external-link-alt"></i> View Site
+                    </a>
+                    
+                    <div class="admin-user" style="display: flex; align-items: center; gap: 1rem;">
+                        <span id="admin-name">Admin User</span>
+                        <button id="admin-logout" class="btn btn-outline" style="border-color: white; color: white;">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="admin-layout" style="display: flex; min-height: calc(100vh - 80px);">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar" style="width: 250px; background: var(--background-light); padding: 2rem 0;">
+            <nav class="admin-nav-menu">
+                <a href="#" class="admin-nav-item active" data-section="dashboard">
+                    <i class="fas fa-chart-line"></i> Dashboard
+                </a>
+                <a href="#" class="admin-nav-item" data-section="products">
+                    <i class="fas fa-box"></i> Products
+                </a>
+                <a href="#" class="admin-nav-item" data-section="orders">
+                    <i class="fas fa-shopping-cart"></i> Orders
+                </a>
+                <a href="#" class="admin-nav-item" data-section="customers">
+                    <i class="fas fa-users"></i> Customers
+                </a>
+                <a href="#" class="admin-nav-item" data-section="categories">
+                    <i class="fas fa-tags"></i> Categories
+                </a>
+                <a href="#" class="admin-nav-item" data-section="messages">
+                    <i class="fas fa-envelope"></i> Messages
+                </a>
+                <a href="#" class="admin-nav-item" data-section="settings">
+                    <i class="fas fa-cog"></i> Settings
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main" style="flex: 1; padding: 2rem;">
+            <!-- Dashboard Section -->
+            <section id="dashboard-section" class="admin-section">
+                <div class="section-header" style="margin-bottom: 2rem;">
+                    <h1>Dashboard Overview</h1>
+                    <p>Welcome to your admin dashboard. Here's a quick overview of your store's performance.</p>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+                    <div class="stat-card" style="background: white; padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow-sm); text-align: center;">
+                        <div class="stat-icon" style="font-size: 3rem; color: var(--accent-color); margin-bottom: 1rem;">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <div class="stat-value" style="font-size: 2rem; font-weight: 600; color: var(--primary-color);" id="total-products">0</div>
+                        <div class="stat-label" style="color: var(--text-light);">Total Products</div>
+                    </div>
+
+                    <div class="stat-card" style="background: white; padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow-sm); text-align: center;">
+                        <div class="stat-icon" style="font-size: 3rem; color: var(--success-color); margin-bottom: 1rem;">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="stat-value" style="font-size: 2rem; font-weight: 600; color: var(--primary-color);" id="total-orders">0</div>
+                        <div class="stat-label" style="color: var(--text-light);">Total Orders</div>
+                    </div>
+
+                    <div class="stat-card" style="background: white; padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow-sm); text-align: center;">
+                        <div class="stat-icon" style="font-size: 3rem; color: var(--secondary-color); margin-bottom: 1rem;">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-value" style="font-size: 2rem; font-weight: 600; color: var(--primary-color);" id="total-customers">0</div>
+                        <div class="stat-label" style="color: var(--text-light);">Total Customers</div>
+                    </div>
+
+                    <div class="stat-card" style="background: white; padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow-sm); text-align: center;">
+                        <div class="stat-icon" style="font-size: 3rem; color: var(--warning-color); margin-bottom: 1rem;">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-value" style="font-size: 2rem; font-weight: 600; color: var(--primary-color);" id="total-revenue">$0</div>
+                        <div class="stat-label" style="color: var(--text-light);">Total Revenue</div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-body" style="padding: 2rem;">
+                                <h3>Recent Orders</h3>
+                                <div id="recent-orders">
+                                    <p class="text-center">No recent orders</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body" style="padding: 2rem;">
+                                <h3>Quick Actions</h3>
+                                <div class="quick-actions" style="display: flex; flex-direction: column; gap: 1rem;">
+                                    <button class="btn btn-primary" onclick="showSection('products')">
+                                        <i class="fas fa-plus"></i> Add Product
+                                    </button>
+                                    <button class="btn btn-secondary" onclick="showSection('categories')">
+                                        <i class="fas fa-tags"></i> Manage Categories
+                                    </button>
+                                    <button class="btn btn-outline" onclick="showSection('customers')">
+                                        <i class="fas fa-users"></i> View Customers
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Products Section -->
+            <section id="products-section" class="admin-section" style="display: none;">
+                <div class="section-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <div>
+                        <h1>Product Management</h1>
+                        <p>Add, edit, and manage your product catalog.</p>
+                    </div>
+                    <button id="add-product-btn" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Add New Product
+                    </button>
+                </div>
+
+                <!-- Product Filters -->
+                <div class="admin-filters" style="background: white; padding: 1.5rem; border-radius: var(--border-radius); margin-bottom: 2rem;">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <input type="text" id="product-search" class="form-control" placeholder="Search products...">
+                        </div>
+                        <div class="col-md-3">
+                            <select id="category-filter" class="form-control">
+                                <option value="">All Categories</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <select id="status-filter" class="form-control">
+                                <option value="">All Status</option>
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-secondary" onclick="resetProductFilters()">
+                                <i class="fas fa-refresh"></i> Reset
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products Table -->
+                <div class="card">
+                    <div class="card-body" style="padding: 0;">
+                        <div class="table-responsive">
+                            <table class="admin-table" style="width: 100%; border-collapse: collapse;">
+                                <thead style="background: var(--background-light);">
+                                    <tr>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color);">Image</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color);">Name</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color);">Category</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color);">Gender</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color);">Price</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color);">Stock</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color);">Status</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color);">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="products-table-body">
+                                    <tr>
+                                        <td colspan="8" style="padding: 2rem; text-align: center;">
+                                            <div class="spinner"></div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Add/Edit Product Modal Content (will be populated dynamically) -->
+            <div id="product-modal-content" style="display: none;">
+                <!-- Modal content will be inserted here -->
+            </div>
+
+            <!-- Other sections will be added as needed -->
+            <section id="orders-section" class="admin-section" style="display: none;">
+                <h1>Order Management</h1>
+                <p>Manage customer orders and track deliveries.</p>
+                <div class="card">
+                    <div class="card-body" style="padding: 2rem;">
+                        <p class="text-center">Order management functionality will be implemented here.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="customers-section" class="admin-section" style="display: none;">
+                <div class="section-header">
+                    <h1>Customer Management</h1>
+                    <p>View and manage customer accounts</p>
+                </div>
+
+                <!-- Customer Stats -->
+                <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: var(--primary-color);">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="total-customers-count">0</h3>
+                            <p>Total Customers</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: var(--success-color);">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="active-customers-count">0</h3>
+                            <p>Active Customers</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: var(--accent-color);">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="new-customers-count">0</h3>
+                            <p>New This Month</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Customer Controls -->
+                <div class="customer-controls" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; gap: 1rem; flex-wrap: wrap;">
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <input type="text" id="customer-search" placeholder="Search customers..." style="padding: 0.5rem; border: 1px solid var(--border-color); border-radius: var(--border-radius); min-width: 250px;">
+                        <select id="customer-status-filter" style="padding: 0.5rem; border: 1px solid var(--border-color); border-radius: var(--border-radius);">
+                            <option value="">All Status</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                            <option value="suspended">Suspended</option>
+                        </select>
+                        <button onclick="searchCustomers()" class="btn btn-primary">
+                            <i class="fas fa-search"></i> Search
+                        </button>
+                    </div>
+                    <button onclick="refreshCustomers()" class="btn btn-secondary">
+                        <i class="fas fa-sync-alt"></i> Refresh
+                    </button>
+                </div>
+
+                <!-- Customer Table -->
+                <div class="card">
+                    <div class="card-body" style="padding: 0;">
+                        <div class="table-responsive">
+                            <table class="admin-table" style="width: 100%; border-collapse: collapse;">
+                                <thead style="background: var(--background-light);">
+                                    <tr>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color);">Name</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color);">Email</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color);">Phone</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color);">Status</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color);">Registered</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color);">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="customers-table-body">
+                                    <tr>
+                                        <td colspan="6" style="padding: 2rem; text-align: center;">
+                                            <div class="spinner"></div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Load More Button -->
+                <div class="text-center" style="margin-top: 2rem;">
+                    <button id="load-more-customers" class="btn btn-secondary" onclick="loadMoreCustomers()" style="display: none;">
+                        Load More Customers
+                    </button>
+                </div>
+            </section>
+
+            <section id="categories-section" class="admin-section" style="display: none;">
+                <h1>Category Management</h1>
+                <p>Organize your products into categories.</p>
+                <div class="card">
+                    <div class="card-body" style="padding: 2rem;">
+                        <p class="text-center">Category management functionality will be implemented here.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="messages-section" class="admin-section" style="display: none;">
+                <h1>Customer Messages</h1>
+                <p>View and respond to customer inquiries.</p>
+                <div class="card">
+                    <div class="card-body" style="padding: 2rem;">
+                        <p class="text-center">Message management functionality will be implemented here.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="settings-section" class="admin-section" style="display: none;">
+                <h1>Settings</h1>
+                <p>Configure your store settings and preferences.</p>
+                <div class="card">
+                    <div class="card-body" style="padding: 2rem;">
+                        <p class="text-center">Settings functionality will be implemented here.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+    <script>
+        let currentAdmin = null;
+        let allProducts = [];
+
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAdminAuth();
+            initializeAdminDashboard();
+        });
+
+        function checkAdminAuth() {
+            const adminSession = localStorage.getItem('velvet_vogue_admin');
+            if (!adminSession) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            try {
+                currentAdmin = JSON.parse(adminSession);
+                
+                // Set admin name immediately
+                document.getElementById('admin-name').textContent = currentAdmin.full_name;
+                
+                // Validate session in background (don't block UI)
+                validateAdminSession(currentAdmin);
+                
+            } catch (e) {
+                localStorage.removeItem('velvet_vogue_admin');
+                window.location.href = 'login.html';
+            }
+        }
+
+        async function validateAdminSession(adminData) {
+            try {
+                // Debug: Check session status with simple endpoint
+                console.log('🔍 Checking session status...');
+                const sessionDebug = await fetch('../php/admin-check.php', {
+                    credentials: 'same-origin'
+                });
+                const debugData = await sessionDebug.json();
+                console.log('🔍 Session debug data:', debugData);
+                
+                if (debugData.admin_logged_in) {
+                    console.log('✅ Admin session validated');
+                    return true;
+                } else {
+                    console.log('❌ Admin not logged in according to session check');
+                    console.log('Session details:', debugData);
+                    return false;
+                }
+                
+            } catch (error) {
+                console.error('Session validation error:', error);
+                console.log('⚠️ Session validation failed, but continuing...');
+                return false;
+            }
+        }
+
+        function initializeAdminDashboard() {
+            // Initialize navigation
+            const navItems = document.querySelectorAll('.admin-nav-item');
+            navItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const section = this.getAttribute('data-section');
+                    showSection(section);
+                    
+                    // Update active nav item
+                    navItems.forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            // Initialize logout
+            document.getElementById('admin-logout').addEventListener('click', handleAdminLogout);
+            
+            // Initialize add product button
+            document.getElementById('add-product-btn').addEventListener('click', showAddProductModal);
+
+            // Wait a moment for session to be fully established, then load dashboard data
+            setTimeout(() => {
+                loadDashboardStats();
+                loadProducts();
+            }, 500);
+        }
+
+        function showSection(sectionName) {
+            const sections = document.querySelectorAll('.admin-section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            document.getElementById(sectionName + '-section').style.display = 'block';
+            
+            // Load section-specific data
+            switch (sectionName) {
+                case 'products':
+                    loadProducts();
+                    break;
+                case 'customers':
+                    loadCustomers();
+                    loadCustomerStats();
+                    break;
+                case 'dashboard':
+                    loadDashboardStats();
+                    break;
+            }
+        }
+
+        function handleAdminLogout() {
+            localStorage.removeItem('velvet_vogue_admin');
+            showNotification('Logged out successfully', 'success');
+            window.location.href = 'login.html';
+        }
+
+        function loadDashboardStats() {
+            console.log('🔄 Loading dashboard stats...');
+            // Use simpler admin API endpoint
+            fetch('../php/customer-fallback.php?action=get_dashboard_stats&_t=' + Date.now(), {
+                credentials: 'same-origin'
+            })
+                .then(response => {
+                    console.log('📊 Dashboard stats response:', response.status);
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('📊 Dashboard stats data:', data);
+                    console.log('📊 Total customers value:', data.stats.total_customers);
+                    if (data.success) {
+                        updateDashboardStats(data.stats);
+                        console.log('✅ Dashboard stats loaded successfully');
+                        console.log('📊 Customer element updated to:', document.getElementById('total-customers').textContent);
+                    } else {
+                        console.error('❌ Dashboard stats error:', data.message);
+                        // Fallback to 0 values
+                        document.getElementById('total-products').textContent = '0';
+                        document.getElementById('total-orders').textContent = '0';
+                        document.getElementById('total-customers').textContent = '0';
+                        document.getElementById('total-revenue').textContent = '$0.00';
+                        showNotification('Error loading dashboard: ' + data.message, 'error');
+                    }
+                })
+                .catch(error => {
+                    console.error('❌ Dashboard stats fetch error:', error);
+                    // Fallback to 0 values
+                    document.getElementById('total-products').textContent = '0';
+                    document.getElementById('total-orders').textContent = '0';
+                    document.getElementById('total-customers').textContent = '0';
+                    document.getElementById('total-revenue').textContent = '$0.00';
+                    showNotification('Error loading dashboard', 'error');
+                });
+        }
+
+        function loadProducts() {
+            console.log('🔄 Loading products...');
+            fetch('../php/admin-simple.php?action=get_all_products', {
+                credentials: 'same-origin'
+            })
+                .then(response => {
+                    console.log('📦 Products response:', response.status);
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('📦 Products data:', data);
+                    if (data.success) {
+                        allProducts = data.products;
+                        displayProducts(allProducts);
+                        console.log('✅ Products loaded successfully:', allProducts.length);
+                    } else {
+                        console.error('❌ Products error:', data.message);
+                        allProducts = [];
+                        displayProducts([]);
+                        showNotification('Error loading products: ' + data.message, 'error');
+                    }
+                })
+                .catch(error => {
+                    console.error('❌ Products fetch error:', error);
+                    allProducts = [];
+                    displayProducts([]);
+                    showNotification('Error loading products', 'error');
+                });
+        }
+
+        function displayProducts(products) {
+            const tbody = document.getElementById('products-table-body');
+            
+            if (products.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="8" style="padding: 2rem; text-align: center;">No products found</td></tr>';
+                return;
+            }
+
+            const productsHTML = products.map(product => `
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                    <td style="padding: 1rem;">
+                        <img src="../${product.image_url}" alt="${product.name}" style="width: 50px; height: 50px; object-fit: cover; border-radius: var(--border-radius-sm);">
+                    </td>
+                    <td style="padding: 1rem;">
+                        <div style="font-weight: 500;">${product.name}</div>
+                        <div style="font-size: 0.9rem; color: var(--text-light);">${product.description.substring(0, 50)}...</div>
+                    </td>
+                    <td style="padding: 1rem;">${product.category_name || 'Uncategorized'}</td>
+                    <td style="padding: 1rem;">
+                        <span class="badge" style="padding: 0.25rem 0.5rem; border-radius: var(--border-radius-sm); font-size: 0.8rem; font-weight: 500; background: ${product.gender === 'Men' ? '#007bff' : product.gender === 'Women' ? '#e91e63' : product.gender === 'Kids' ? '#ff9800' : '#6c757d'}; color: white;">
+                            ${product.gender || 'Unisex'}
+                        </span>
+                    </td>
+                    <td style="padding: 1rem; font-weight: 600;">$${product.price}</td>
+                    <td style="padding: 1rem;">${product.stock_quantity}</td>
+                    <td style="padding: 1rem;">
+                        <span class="status-badge ${product.stock_quantity > 0 ? 'active' : 'inactive'}" style="padding: 0.25rem 0.75rem; border-radius: var(--border-radius-sm); font-size: 0.8rem; font-weight: 500; ${product.stock_quantity > 0 ? 'background: var(--success-color); color: white;' : 'background: var(--error-color); color: white;'}">
+                            ${product.stock_quantity > 0 ? 'Active' : 'Out of Stock'}
+                        </span>
+                    </td>
+                    <td style="padding: 1rem;">
+                        <div style="display: flex; gap: 0.5rem;">
+                            <button class="btn btn-sm btn-primary" onclick="editProduct(${product.id})" title="Edit">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-sm" onclick="deleteProduct(${product.id})" title="Delete" style="background: var(--error-color); color: white; border: none;">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+
+            tbody.innerHTML = productsHTML;
+        }
+
+        function editProduct(productId) {
+            showEditProductModal(productId);
+        }
+
+        function deleteProduct(productId) {
+            if (!confirm('Are you sure you want to delete this product? This action cannot be undone.')) {
+                return;
+            }
+            
+            const formData = new FormData();
+            formData.append('action', 'delete_product');
+            formData.append('product_id', productId);
+            
+            fetch('../php/admin-simple.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showNotification('Product deleted successfully', 'success');
+                    loadProducts(); // Reload products list
+                } else {
+                    showNotification(data.message || 'Failed to delete product', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showNotification('Error deleting product', 'error');
+            });
+        }
+
+        function resetProductFilters() {
+            document.getElementById('product-search').value = '';
+            document.getElementById('category-filter').value = '';
+            document.getElementById('status-filter').value = '';
+            displayProducts(allProducts);
+        }
+
+        // Product Modal Functions
+        function showAddProductModal() {
+            createProductModal('Add New Product', null);
+        }
+
+        function showEditProductModal(productId) {
+            // Fetch product data first
+            fetch(`../php/admin-simple.php?action=get_product&product_id=${productId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        createProductModal('Edit Product', data.product);
+                    } else {
+                        showNotification(data.message || 'Failed to load product', 'error');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showNotification('Error loading product', 'error');
+                });
+        }
+
+        function createProductModal(title, product) {
+            const isEdit = product !== null;
+            
+            console.log('🔄 Loading categories for product modal...');
+            // Fetch categories for dropdown
+            fetch('../php/admin-simple.php?action=get_categories', {
+                credentials: 'same-origin'
+            })
+                .then(response => {
+                    console.log('📋 Categories response:', response.status);
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('📋 Categories data:', data);
+                    const categories = data.success ? data.categories : [];
+                    
+                    if (!data.success) {
+                        console.error('❌ Categories error:', data.message);
+                        showNotification('Error loading categories: ' + data.message, 'error');
+                        return;
+                    }
+                    
+                    console.log('✅ Categories loaded successfully:', categories.length);
+                    
+                    const modalHTML = `
+                        <div class="modal-overlay" id="product-modal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center;">
+                            <div class="modal-content" style="background: white; padding: 2rem; border-radius: 8px; width: 90%; max-width: 600px; max-height: 90vh; overflow-y: auto;">
+                                <div class="modal-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; border-bottom: 1px solid #eee; padding-bottom: 1rem;">
+                                    <h2>${title}</h2>
+                                    <button onclick="closeProductModal()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">&times;</button>
+                                </div>
+                                
+                                <form id="product-form">
+                                    <div class="form-group" style="margin-bottom: 1rem;">
+                                        <label class="form-label">Product Name *</label>
+                                        <input type="text" name="name" class="form-control" value="${product ? product.name : ''}" required>
+                                    </div>
+                                    
+                                    <div class="form-group" style="margin-bottom: 1rem;">
+                                        <label class="form-label">Description *</label>
+                                        <textarea name="description" class="form-control" rows="3" required>${product ? product.description : ''}</textarea>
+                                    </div>
+                                    
+                                    <div class="row" style="display: flex; gap: 1rem;">
+                                        <div class="col" style="flex: 1;">
+                                            <div class="form-group" style="margin-bottom: 1rem;">
+                                                <label class="form-label">Price ($) *</label>
+                                                <input type="number" name="price" class="form-control" step="0.01" min="0" value="${product ? product.price : ''}" required>
+                                            </div>
+                                        </div>
+                                        <div class="col" style="flex: 1;">
+                                            <div class="form-group" style="margin-bottom: 1rem;">
+                                                <label class="form-label">Stock Quantity *</label>
+                                                <input type="number" name="stock_quantity" class="form-control" min="0" value="${product ? product.stock_quantity : ''}" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group" style="margin-bottom: 1rem;">
+                                        <label class="form-label">Category *</label>
+                                        <select name="category_id" class="form-control" required>
+                                            <option value="">Select Category</option>
+                                            ${categories.map(cat => `
+                                                <option value="${cat.id}" ${product && product.category_id == cat.id ? 'selected' : ''}>
+                                                    ${cat.name}
+                                                </option>
+                                            `).join('')}
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group" style="margin-bottom: 1rem;">
+                                        <label class="form-label">Image URL</label>
+                                        <input type="text" name="image_url" class="form-control" value="${product ? product.image_url : 'images/products/default-product.jpg'}" placeholder="images/products/product-name.jpg">
+                                    </div>
+                                    
+                                    <div class="row" style="display: flex; gap: 1rem;">
+                                        <div class="col" style="flex: 1;">
+                                            <div class="form-group" style="margin-bottom: 1rem;">
+                                                <label class="form-label">Sizes (comma-separated)</label>
+                                                <input type="text" name="sizes" class="form-control" value="${product ? product.sizes || '' : ''}" placeholder="XS, S, M, L, XL">
+                                            </div>
+                                        </div>
+                                        <div class="col" style="flex: 1;">
+                                            <div class="form-group" style="margin-bottom: 1rem;">
+                                                <label class="form-label">Colors (comma-separated)</label>
+                                                <input type="text" name="colors" class="form-control" value="${product ? product.colors || '' : ''}" placeholder="Red, Blue, Green">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row" style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                                        <div class="col" style="flex: 1;">
+                                            <div class="form-group" style="margin-bottom: 1rem;">
+                                                <label class="form-label">Gender</label>
+                                                <select name="gender" class="form-control" required>
+                                                    <option value="Unisex" ${product && product.gender === 'Unisex' ? 'selected' : ''}>Unisex</option>
+                                                    <option value="Men" ${product && product.gender === 'Men' ? 'selected' : ''}>Men</option>
+                                                    <option value="Women" ${product && product.gender === 'Women' ? 'selected' : ''}>Women</option>
+                                                    <option value="Kids" ${product && product.gender === 'Kids' ? 'selected' : ''}>Kids</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col" style="flex: 1;">
+                                            <!-- Empty column for spacing -->
+                                        </div>
+                                    </div>
+                                    
+                                    ${isEdit ? `<input type="hidden" name="product_id" value="${product.id}">` : ''}
+                                    
+                                    <div class="modal-footer" style="display: flex; gap: 1rem; justify-content: flex-end; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #eee;">
+                                        <button type="button" onclick="closeProductModal()" class="btn btn-secondary">Cancel</button>
+                                        <button type="submit" class="btn btn-primary">${isEdit ? 'Update Product' : 'Add Product'}</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    `;
+                    
+                    document.body.insertAdjacentHTML('beforeend', modalHTML);
+                    
+                    // Add form submit handler
+                    document.getElementById('product-form').addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        submitProductForm(isEdit);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading categories:', error);
+                    showNotification('Error loading categories', 'error');
+                });
+        }
+
+        function closeProductModal() {
+            const modal = document.getElementById('product-modal');
+            if (modal) {
+                modal.remove();
+            }
+        }
+
+        function submitProductForm(isEdit) {
+            const form = document.getElementById('product-form');
+            const formData = new FormData(form);
+            formData.append('action', isEdit ? 'update_product' : 'add_product');
+            
+            fetch('../php/admin-simple.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showNotification(data.message, 'success');
+                    closeProductModal();
+                    loadProducts(); // Reload products list
+                } else {
+                    showNotification(data.message || 'Operation failed', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showNotification('Error saving product', 'error');
+            });
+        }
+
+        // Dashboard stats loading
+        // Removed duplicate loadDashboardStats function - using the main one above
+
+        function updateDashboardStats(stats) {
+            // Update dashboard stat cards if they exist
+            const statElements = {
+                'total-products': stats.total_products,
+                'total-orders': stats.total_orders,
+                'total-customers': stats.total_customers,
+                'total-revenue': stats.total_revenue,
+                'low-stock': stats.low_stock_products || 0,
+                'total-categories': stats.total_categories,
+                'out-of-stock': stats.out_of_stock_products || 0,
+                'total-users': stats.total_customers // Fallback mapping
+            };
+            
+            Object.entries(statElements).forEach(([id, value]) => {
+                const element = document.getElementById(id);
+                if (element) {
+                    if (id === 'total-revenue') {
+                        element.textContent = '$' + value;
+                    } else {
+                        element.textContent = value;
+                    }
+                }
+            });
+        }
+
+        // Customer Management Functions
+        let currentCustomerOffset = 0;
+        let currentCustomerSearch = '';
+        let currentCustomerStatus = '';
+        const customerLimit = 20;
+
+        function loadCustomers(reset = true) {
+            if (reset) {
+                currentCustomerOffset = 0;
+            }
+
+            const params = new URLSearchParams({
+                limit: customerLimit,
+                offset: currentCustomerOffset,
+                search: currentCustomerSearch,
+                status: currentCustomerStatus
+            });
+
+            fetch(`../php/customer-fallback.php?action=get_all_customers&${params}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        displayCustomers(data.customers, reset);
+                        updateLoadMoreButton(data.has_more);
+                        currentCustomerOffset += customerLimit;
+                    } else {
+                        showNotification(data.message || 'Failed to load customers', 'error');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading customers:', error);
+                    showNotification('Error loading customers', 'error');
+                });
+        }
+
+        function displayCustomers(customers, reset = true) {
+            const tbody = document.getElementById('customers-table-body');
+            
+            if (reset) {
+                tbody.innerHTML = '';
+            }
+
+            if (customers.length === 0 && reset) {
+                tbody.innerHTML = '<tr><td colspan="6" style="padding: 2rem; text-align: center;">No customers found</td></tr>';
+                return;
+            }
+
+            const customersHTML = customers.map(customer => {
+                const registeredDate = new Date(customer.created_at).toLocaleDateString();
+                const statusColor = customer.status === 'active' ? 'var(--success-color)' : 
+                                   customer.status === 'suspended' ? 'var(--error-color)' : 'var(--warning-color)';
+                
+                return `
+                    <tr style="border-bottom: 1px solid var(--border-color);">
+                        <td style="padding: 1rem;">
+                            <div style="font-weight: 500;">${customer.first_name} ${customer.last_name}</div>
+                        </td>
+                        <td style="padding: 1rem;">${customer.email}</td>
+                        <td style="padding: 1rem;">${customer.phone || 'N/A'}</td>
+                        <td style="padding: 1rem;">
+                            <span class="status-badge" style="padding: 0.25rem 0.75rem; border-radius: var(--border-radius-sm); font-size: 0.8rem; font-weight: 500; background: ${statusColor}; color: white; text-transform: capitalize;">
+                                ${customer.status}
+                            </span>
+                        </td>
+                        <td style="padding: 1rem;">${registeredDate}</td>
+                        <td style="padding: 1rem;">
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-sm btn-primary" onclick="editCustomer(${customer.id})" title="Edit">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn btn-sm btn-warning" onclick="toggleCustomerStatus(${customer.id}, '${customer.status}')" title="${customer.status === 'active' ? 'Deactivate' : 'Activate'}">
+                                    <i class="fas fa-${customer.status === 'active' ? 'user-slash' : 'user-check'}"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+
+            if (reset) {
+                tbody.innerHTML = customersHTML;
+            } else {
+                tbody.insertAdjacentHTML('beforeend', customersHTML);
+            }
+        }
+
+        function searchCustomers() {
+            currentCustomerSearch = document.getElementById('customer-search').value;
+            currentCustomerStatus = document.getElementById('customer-status-filter').value;
+            loadCustomers(true);
+        }
+
+        function refreshCustomers() {
+            document.getElementById('customer-search').value = '';
+            document.getElementById('customer-status-filter').value = '';
+            currentCustomerSearch = '';
+            currentCustomerStatus = '';
+            loadCustomers(true);
+        }
+
+        function loadMoreCustomers() {
+            loadCustomers(false);
+        }
+
+        function updateLoadMoreButton(hasMore) {
+            const button = document.getElementById('load-more-customers');
+            button.style.display = hasMore ? 'inline-block' : 'none';
+        }
+
+        function editCustomer(customerId) {
+            fetch(`../php/customer-fallback.php?action=get_customer&customer_id=${customerId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showCustomerModal(data.customer, true);
+                    } else {
+                        showNotification(data.message || 'Failed to load customer details', 'error');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading customer:', error);
+                    showNotification('Error loading customer details', 'error');
+                });
+        }
+
+        function showCustomerModal(customer, isEdit = false) {
+            const modalHTML = `
+                <div class="modal-overlay" id="customer-modal" onclick="closeCustomerModal(event)">
+                    <div class="modal-content" style="max-width: 600px; background: white; border-radius: var(--border-radius); padding: 0; max-height: 90vh; overflow-y: auto;">
+                        <div class="modal-header" style="padding: 1.5rem; border-bottom: 1px solid var(--border-color); display: flex; justify-content: between; align-items: center;">
+                            <h3 style="margin: 0; flex: 1;">${isEdit ? 'Edit Customer' : 'Customer Details'}</h3>
+                            <button class="modal-close" onclick="closeCustomerModal()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-light);">&times;</button>
+                        </div>
+                        <form id="customer-form" onsubmit="submitCustomerForm(event, ${isEdit})" style="padding: 1.5rem;">
+                            <div class="row" style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                                <div class="col" style="flex: 1;">
+                                    <div class="form-group" style="margin-bottom: 1rem;">
+                                        <label class="form-label">First Name *</label>
+                                        <input type="text" name="first_name" class="form-control" value="${customer.first_name}" required>
+                                    </div>
+                                </div>
+                                <div class="col" style="flex: 1;">
+                                    <div class="form-group" style="margin-bottom: 1rem;">
+                                        <label class="form-label">Last Name *</label>
+                                        <input type="text" name="last_name" class="form-control" value="${customer.last_name}" required>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group" style="margin-bottom: 1rem;">
+                                <label class="form-label">Email *</label>
+                                <input type="email" name="email" class="form-control" value="${customer.email}" required>
+                            </div>
+                            
+                            <div class="row" style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                                <div class="col" style="flex: 1;">
+                                    <div class="form-group" style="margin-bottom: 1rem;">
+                                        <label class="form-label">Phone</label>
+                                        <input type="text" name="phone" class="form-control" value="${customer.phone || ''}">
+                                    </div>
+                                </div>
+                                <div class="col" style="flex: 1;">
+                                    <div class="form-group" style="margin-bottom: 1rem;">
+                                        <label class="form-label">Status</label>
+                                        <select name="status" class="form-control" required>
+                                            <option value="active" ${customer.status === 'active' ? 'selected' : ''}>Active</option>
+                                            <option value="inactive" ${customer.status === 'inactive' ? 'selected' : ''}>Inactive</option>
+                                            <option value="suspended" ${customer.status === 'suspended' ? 'selected' : ''}>Suspended</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group" style="margin-bottom: 1rem;">
+                                <label class="form-label">Address</label>
+                                <textarea name="address" class="form-control" rows="3">${customer.address || ''}</textarea>
+                            </div>
+                            
+                            ${isEdit ? `<input type="hidden" name="customer_id" value="${customer.id}">` : ''}
+                            
+                            <div class="modal-footer" style="display: flex; gap: 1rem; justify-content: flex-end; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+                                <button type="button" onclick="closeCustomerModal()" class="btn btn-secondary">Cancel</button>
+                                <button type="submit" class="btn btn-primary">${isEdit ? 'Update Customer' : 'View Details'}</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            `;
+
+            document.body.insertAdjacentHTML('beforeend', modalHTML);
+        }
+
+        function closeCustomerModal(event) {
+            if (event && event.target !== event.currentTarget) return;
+            
+            const modal = document.getElementById('customer-modal');
+            if (modal) {
+                modal.remove();
+            }
+        }
+
+        function submitCustomerForm(event, isEdit) {
+            event.preventDefault();
+            
+            const form = document.getElementById('customer-form');
+            const formData = new FormData(form);
+            formData.append('action', 'update_customer');
+            
+            fetch('../php/customer-fallback.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showNotification(data.message, 'success');
+                    closeCustomerModal();
+                    loadCustomers(true);
+                } else {
+                    showNotification(data.message || 'Operation failed', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showNotification('Error updating customer', 'error');
+            });
+        }
+
+        function toggleCustomerStatus(customerId, currentStatus) {
+            const newStatus = currentStatus === 'active' ? 'inactive' : 'active';
+            const action = newStatus === 'active' ? 'activate' : 'deactivate';
+            
+            if (confirm(`Are you sure you want to ${action} this customer?`)) {
+                const formData = new FormData();
+                formData.append('action', 'update_customer');
+                formData.append('customer_id', customerId);
+                formData.append('status', newStatus);
+                
+                fetch('../php/customer-fallback.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showNotification(`Customer ${action}d successfully`, 'success');
+                        loadCustomers(true);
+                    } else {
+                        showNotification(data.message || 'Operation failed', 'error');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showNotification(`Error ${action}ing customer`, 'error');
+                });
+            }
+        }
+
+        function loadCustomerStats() {
+            fetch('../php/customer-fallback.php?action=get_customer_stats')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        updateCustomerStats(data.stats);
+                    }
+                })
+                .catch(error => console.error('Error loading customer stats:', error));
+        }
+
+        function updateCustomerStats(stats) {
+            const statElements = {
+                'total-customers-count': stats.total_customers,
+                'active-customers-count': stats.active_customers,
+                'new-customers-count': stats.new_this_month
+            };
+            
+            Object.entries(statElements).forEach(([id, value]) => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.textContent = value;
+                }
+            });
+        }
+
+        // Add customer search on Enter key
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('customer-search');
+            if (searchInput) {
+                searchInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        searchCustomers();
+                    }
+                });
+            }
+        });
+    </script>
+
+    <style>
+        .admin-nav-item {
+            display: block;
+            padding: 1rem 2rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            border-left: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .admin-nav-item:hover,
+        .admin-nav-item.active {
+            background: white;
+            border-left-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .admin-nav-item i {
+            margin-right: 0.75rem;
+            width: 20px;
+        }
+
+        .admin-table th,
+        .admin-table td {
+            vertical-align: middle;
+        }
+
+        .btn-sm {
+            padding: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        .stat-card {
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        @media (max-width: 768px) {
+            .admin-layout {
+                flex-direction: column;
+            }
+            
+            .admin-sidebar {
+                width: 100%;
+                order: 2;
+            }
+            
+            .admin-main {
+                order: 1;
+            }
+            
+            .admin-navbar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Velvet Vogue</title>
+    <meta name="description" content="Admin login for Velvet Vogue management system.">
+    
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); min-height: 100vh; display: flex; align-items: center;">
+    <div class="container">
+        <div class="row justify-center">
+            <div class="col-lg-4 col-md-6">
+                <div class="admin-login-card" style="background: white; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-lg); padding: 3rem; text-align: center;">
+                    <!-- Logo -->
+                    <div class="admin-logo" style="margin-bottom: 2rem;">
+                        <a href="../index.html" class="logo" style="font-size: 2.5rem;">
+                            Velvet <span>Vogue</span>
+                        </a>
+                        <div style="margin-top: 0.5rem; color: var(--text-light); font-size: 1.1rem;">
+                            <i class="fas fa-cog"></i> Admin Panel
+                        </div>
+                    </div>
+
+                    <!-- Login Form -->
+                    <form id="admin-login-form" data-validate>
+                        <div class="form-group text-left">
+                            <label class="form-label">Username or Email</label>
+                            <div style="position: relative;">
+                                <input type="text" name="username" class="form-control" required style="padding-left: 3rem;">
+                                <i class="fas fa-user" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-light);"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group text-left">
+                            <label class="form-label">Password</label>
+                            <div style="position: relative;">
+                                <input type="password" name="password" class="form-control" required style="padding-left: 3rem;">
+                                <i class="fas fa-lock" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-light);"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group text-left">
+                            <label class="form-label">
+                                <input type="checkbox" name="remember"> Remember me
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; margin-top: 1rem;">
+                            <i class="fas fa-sign-in-alt"></i> Login to Admin Panel
+                        </button>
+                    </form>
+
+                    <!-- Admin Registration Link -->
+                    <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+                        <p style="color: var(--text-light); margin-bottom: 1rem;">Need admin access?</p>
+                        <a href="register.html" class="btn btn-secondary">
+                            <i class="fas fa-user-plus"></i> Register Admin Account
+                        </a>
+                    </div>
+
+                    <!-- Back to Site -->
+                    <div style="margin-top: 2rem;">
+                        <a href="../index.html" style="color: var(--text-light); font-size: 0.9rem;">
+                            <i class="fas fa-arrow-left"></i> Back to Website
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if admin is already logged in
+            const adminSession = localStorage.getItem('velvet_vogue_admin');
+            if (adminSession) {
+                window.location.href = 'dashboard.html';
+                return;
+            }
+
+            // Initialize login form
+            document.getElementById('admin-login-form').addEventListener('submit', handleAdminLogin);
+        });
+
+        async function handleAdminLogin(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            formData.append('action', 'admin_login');
+
+            try {
+                const response = await fetch('../php/admin-login.php', {
+                    method: 'POST',
+                    body: formData,
+                    credentials: 'same-origin'
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Store admin session in localStorage
+                    localStorage.setItem('velvet_vogue_admin', JSON.stringify(data.admin));
+                    
+                    showNotification('Admin login successful!', 'success');
+                    
+                    // Wait a bit longer for session to be established
+                    setTimeout(() => {
+                        window.location.href = 'dashboard.html';
+                    }, 1000);
+                } else {
+                    showNotification(data.message || 'Login failed', 'error');
+                }
+            } catch (error) {
+                console.error('Admin login error:', error);
+                showNotification('Login error occurred. Please try again.', 'error');
+            }
+        }
+    </script>
+
+    <style>
+        .admin-login-card {
+            animation: slideInUp 0.6s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.25);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Velvet Vogue</title>
+    <meta name="description" content="Get in touch with Velvet Vogue. We're here to help with any questions about our products or services.">
+    
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="../index.html" class="logo">
+                    Velvet <span>Vogue</span>
+                </a>
+                
+                <ul class="nav-menu">
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="categories.html" class="nav-link">Categories</a></li>
+                    <li><a href="products.html" class="nav-link">Products</a></li>
+                    <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                </ul>
+                
+                <div class="nav-icons">
+                    <a href="account.html" class="nav-icon" title="Account">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <a href="cart.html" class="nav-icon" title="Shopping Cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <a href="../admin/login.html" class="nav-icon" title="Admin">
+                        <i class="fas fa-cog"></i>
+                    </a>
+                </div>
+                
+                <div class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <section class="page-header" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; padding: 3rem 0;">
+            <div class="container">
+                <div class="text-center">
+                    <h1><i class="fas fa-envelope"></i> Contact Us</h1>
+                    <p>We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Information -->
+        <section class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 mb-4">
+                        <div class="contact-info-card" style="background: white; padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow-sm); text-align: center; height: 100%;">
+                            <div class="contact-icon" style="font-size: 3rem; color: var(--accent-color); margin-bottom: 1rem;">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h3>Visit Our Store</h3>
+                            <p style="color: var(--text-light);">
+                                11/2 Dematagoda place<br>
+                                Colombo-09, Colombo<br>
+                                Sri Lanka
+                            </p>
+                            <a href="#" class="btn btn-outline">Get Directions</a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 mb-4">
+                        <div class="contact-info-card" style="background: white; padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow-sm); text-align: center; height: 100%;">
+                            <div class="contact-icon" style="font-size: 3rem; color: var(--accent-color); margin-bottom: 1rem;">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <h3>Call Us</h3>
+                            <p style="color: var(--text-light);">
+                                Phone: <a href="tel:+94778672554">+94 77 867 2554</a><br>
+                                WhatsApp: <a href="tel:+94778672554">+94 77 867 2554</a><br>
+                                <strong>Hours:</strong> Mon-Sat 9AM-8PM, Sun 10AM-6PM
+                            </p>
+                            <a href="tel:+15551234567" class="btn btn-outline">Call Now</a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 mb-4">
+                        <div class="contact-info-card" style="background: white; padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow-sm); text-align: center; height: 100%;">
+                            <div class="contact-icon" style="font-size: 3rem; color: var(--accent-color); margin-bottom: 1rem;">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h3>Email Us</h3>
+                            <p style="color: var(--text-light);">
+                                General: <a href="mailto:info@velvetvogue.com">info@velvetvogue.com</a><br>
+                                Support: <a href="mailto:support@velvetvogue.com">support@velvetvogue.com</a><br>
+                                Orders: <a href="mailto:orders@velvetvogue.com">orders@velvetvogue.com</a>
+                            </p>
+                            <a href="mailto:info@velvetvogue.com" class="btn btn-outline">Send Email</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form -->
+        <section class="section" style="background: var(--background-light);">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="contact-form-container">
+                            <div class="section-title text-center">
+                                <h2>Send Us a Message</h2>
+                                <p class="section-subtitle">Fill out the form below and we'll get back to you within 24 hours</p>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-body" style="padding: 3rem;">
+                                    <form id="contact-form" data-validate>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-label">First Name *</label>
+                                                    <input type="text" name="first_name" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-label">Last Name *</label>
+                                                    <input type="text" name="last_name" class="form-control" required>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-label">Email Address *</label>
+                                                    <input type="email" name="email" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-label">Phone Number</label>
+                                                    <input type="tel" name="phone" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="form-label">Subject *</label>
+                                            <select name="subject" class="form-control" required>
+                                                <option value="">Select a subject</option>
+                                                <option value="General Inquiry">General Inquiry</option>
+                                                <option value="Product Question">Product Question</option>
+                                                <option value="Order Support">Order Support</option>
+                                                <option value="Shipping & Returns">Shipping & Returns</option>
+                                                <option value="Technical Support">Technical Support</option>
+                                                <option value="Wholesale Inquiry">Wholesale Inquiry</option>
+                                                <option value="Partnership">Partnership Opportunity</option>
+                                                <option value="Complaint">Complaint</option>
+                                                <option value="Compliment">Compliment</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="form-label">Order Number (if applicable)</label>
+                                            <input type="text" name="order_number" class="form-control" placeholder="e.g., VV-2025-001234">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="form-label">Message *</label>
+                                            <textarea name="message" class="form-control" rows="6" placeholder="Please provide as much detail as possible..." required></textarea>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="form-label">How did you hear about us?</label>
+                                            <select name="source" class="form-control">
+                                                <option value="">Select an option</option>
+                                                <option value="Search Engine">Search Engine (Google, Bing, etc.)</option>
+                                                <option value="Social Media">Social Media</option>
+                                                <option value="Friend/Family">Friend or Family Recommendation</option>
+                                                <option value="Advertisement">Advertisement</option>
+                                                <option value="Email Newsletter">Email Newsletter</option>
+                                                <option value="Fashion Blog">Fashion Blog</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="form-label">
+                                                <input type="checkbox" name="newsletter" value="1"> 
+                                                Subscribe to our newsletter for fashion updates and exclusive offers
+                                            </label>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="form-label">
+                                                <input type="checkbox" name="privacy_policy" required> 
+                                                I agree to the <a href="#" style="color: var(--accent-color);">Privacy Policy</a> and consent to the processing of my personal data *
+                                            </label>
+                                        </div>
+
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-primary btn-lg">
+                                                <i class="fas fa-paper-plane"></i> Send Message
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="section">
+            <div class="container">
+                <div class="section-title text-center">
+                    <h2>Frequently Asked Questions</h2>
+                    <p class="section-subtitle">Quick answers to common questions</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <div class="faq-container">
+                            <div class="faq-item" style="background: white; border-radius: var(--border-radius); margin-bottom: 1rem; box-shadow: var(--shadow-sm);">
+                                <div class="faq-question" style="padding: 1.5rem; cursor: pointer; border-bottom: 1px solid var(--border-color);" onclick="toggleFAQ(this)">
+                                    <h4 style="margin: 0; color: var(--primary-color);">
+                                        <i class="fas fa-plus"></i> What is your return policy?
+                                    </h4>
+                                </div>
+                                <div class="faq-answer" style="padding: 1.5rem; display: none;">
+                                    <p>We offer a 30-day return policy for all unworn items with original tags. Items must be in original condition for a full refund. Free return shipping is provided for defective items.</p>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" style="background: white; border-radius: var(--border-radius); margin-bottom: 1rem; box-shadow: var(--shadow-sm);">
+                                <div class="faq-question" style="padding: 1.5rem; cursor: pointer; border-bottom: 1px solid var(--border-color);" onclick="toggleFAQ(this)">
+                                    <h4 style="margin: 0; color: var(--primary-color);">
+                                        <i class="fas fa-plus"></i> How long does shipping take?
+                                    </h4>
+                                </div>
+                                <div class="faq-answer" style="padding: 1.5rem; display: none;">
+                                    <p>Standard shipping takes 3-5 business days. Express shipping (1-2 business days) and overnight shipping are also available. Free shipping is offered on orders over $50.</p>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" style="background: white; border-radius: var(--border-radius); margin-bottom: 1rem; box-shadow: var(--shadow-sm);">
+                                <div class="faq-question" style="padding: 1.5rem; cursor: pointer; border-bottom: 1px solid var(--border-color);" onclick="toggleFAQ(this)">
+                                    <h4 style="margin: 0; color: var(--primary-color);">
+                                        <i class="fas fa-plus"></i> Do you offer international shipping?
+                                    </h4>
+                                </div>
+                                <div class="faq-answer" style="padding: 1.5rem; display: none;">
+                                    <p>Currently, we ship within the United States only. We're working on expanding our shipping to international destinations. Sign up for our newsletter to be notified when international shipping becomes available.</p>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" style="background: white; border-radius: var(--border-radius); margin-bottom: 1rem; box-shadow: var(--shadow-sm);">
+                                <div class="faq-question" style="padding: 1.5rem; cursor: pointer; border-bottom: 1px solid var(--border-color);" onclick="toggleFAQ(this)">
+                                    <h4 style="margin: 0; color: var(--primary-color);">
+                                        <i class="fas fa-plus"></i> How can I track my order?
+                                    </h4>
+                                </div>
+                                <div class="faq-answer" style="padding: 1.5rem; display: none;">
+                                    <p>Once your order ships, you'll receive a tracking number via email. You can also track your order by logging into your account and viewing your order history.</p>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" style="background: white; border-radius: var(--border-radius); margin-bottom: 1rem; box-shadow: var(--shadow-sm);">
+                                <div class="faq-question" style="padding: 1.5rem; cursor: pointer; border-bottom: 1px solid var(--border-color);" onclick="toggleFAQ(this)">
+                                    <h4 style="margin: 0; color: var(--primary-color);">
+                                        <i class="fas fa-plus"></i> What payment methods do you accept?
+                                    </h4>
+                                </div>
+                                <div class="faq-answer" style="padding: 1.5rem; display: none;">
+                                    <p>We accept all major credit cards (Visa, MasterCard, American Express, Discover), PayPal, and offer cash on delivery for local orders. All transactions are secured with SSL encryption.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Velvet Vogue</h3>
+                    <p>Premium fashion for the modern lifestyle. Discover your style with our curated collection of trendy and elegant pieces.</p>
+                    <div class="social-links" style="margin-top: 1rem;">
+                        <a href="#" style="margin-right: 1rem; font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
+                        <a href="#" style="margin-right: 1rem; font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="margin-right: 1rem; font-size: 1.5rem;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="margin-right: 1rem; font-size: 1.5rem;"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="../index.html">Home</a>
+                    <a href="categories.html">Categories</a>
+                    <a href="products.html">Products</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="account.html">My Account</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Customer Service</h3>
+                    <a href="#">Shipping Info</a>
+                    <a href="#">Returns & Exchanges</a>
+                    <a href="#">Size Guide</a>
+                    <a href="#">FAQ</a>
+                    <a href="contact.html">Support</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 11/2 Dematagoda place, Colombo-09, Colombo</p>
+                    <p><i class="fas fa-phone"></i> +94 77 867 2554</p>
+                    <p><i class="fas fa-envelope"></i> info@velvetvogue.com</p>
+                    <p><i class="fas fa-clock"></i> Mon-Sat: 9AM-8PM, Sun: 10AM-6PM</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Velvet Vogue. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize contact form
+            document.getElementById('contact-form').addEventListener('submit', handleContactForm);
+        });
+
+        function handleContactForm(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            
+            // Add action parameter
+            formData.append('action', 'contact');
+
+            fetch('../php/contact.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showNotification('Thank you! Your message has been sent successfully. We\'ll get back to you within 24 hours.', 'success');
+                    e.target.reset();
+                } else {
+                    showNotification(data.message || 'Failed to send message. Please try again.', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Contact form error:', error);
+                showNotification('There was an error sending your message. Please try again or contact us directly.', 'error');
+            });
+        }
+
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            const answer = faqItem.querySelector('.faq-answer');
+            const icon = element.querySelector('i');
+            
+            if (answer.style.display === 'none' || answer.style.display === '') {
+                answer.style.display = 'block';
+                icon.className = 'fas fa-minus';
+                element.style.borderBottom = 'none';
+            } else {
+                answer.style.display = 'none';
+                icon.className = 'fas fa-plus';
+                element.style.borderBottom = '1px solid var(--border-color)';
+            }
+        }
+    </script>
+
+    <style>
+        .contact-info-card {
+            transition: transform 0.3s ease;
+        }
+
+        .contact-info-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .faq-question {
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: var(--background-light);
+        }
+
+        .faq-answer {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .contact-info-card {
+                margin-bottom: 2rem;
+            }
+            
+            .card-body {
+                padding: 2rem !important;
+            }
+        }
+    </style>
+</body>
+</html>

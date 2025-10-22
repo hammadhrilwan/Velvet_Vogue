@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velvet Vogue - Premium Fashion for Young Adults</title>
+    <meta name="description" content="Discover trendy casualwear and elegant formal wear at Velvet Vogue. Premium fashion for young adults with style and sophistication.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    Velvet <span>Vogue</span>
+                </a>
+                
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="pages/categories.html" class="nav-link">Categories</a></li>
+                    <li><a href="pages/products.html" class="nav-link">Products</a></li>
+                    <li><a href="pages/contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                
+                <div class="nav-icons">
+                    <a href="pages/account.html" class="nav-icon" title="Account">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <a href="pages/cart.html" class="nav-icon" title="Shopping Cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <a href="admin/login.html" class="nav-icon" title="Admin">
+                        <i class="fas fa-cog"></i>
+                    </a>
+                </div>
+                
+                <div class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Welcome to Velvet Vogue</h1>
+                    <p>Discover premium fashion that speaks to your style. From trendy casualwear to elegant formal pieces, find your perfect look for every occasion.</p>
+                    <div class="hero-buttons">
+                        <a href="pages/categories.html" class="btn btn-primary btn-lg">Shop Now</a>
+                        <a href="pages/products.html" class="btn btn-outline btn-lg">View Collection</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products Section -->
+        <section class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Featured Products</h2>
+                    <p class="section-subtitle">Handpicked pieces that define modern elegance</p>
+                </div>
+                
+                <div class="product-grid" id="featured-products">
+                    <!-- Featured products will be loaded here via JavaScript -->
+                    <div class="spinner"></div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <a href="pages/products.html" class="btn btn-secondary">View All Products</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section class="section" style="background: var(--background-light);">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Shop by Category</h2>
+                    <p class="section-subtitle">Find exactly what you're looking for</p>
+                </div>
+                
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-6 mb-4 d-flex">
+                        <div class="card category-card h-100" style="width: 100%;">
+                            <img src="images/categories/women-category.jpg" alt="Women's Fashion" class="card-img">
+                            <div class="card-body text-center d-flex flex-column">
+                                <h3 class="card-title">Women's Fashion</h3>
+                                <p class="card-text flex-grow-1">Elegant dresses, stylish tops, and sophisticated pieces for the modern woman.</p>
+                                <a href="pages/categories.html?gender=women" class="btn btn-primary mt-auto">Shop Women's</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 mb-4 d-flex">
+                        <div class="card category-card h-100" style="width: 100%;">
+                            <img src="images/categories/men-category.jpg" alt="Men's Fashion" class="card-img">
+                            <div class="card-body text-center d-flex flex-column">
+                                <h3 class="card-title">Men's Fashion</h3>
+                                <p class="card-text flex-grow-1">Sharp suits, casual wear, and timeless pieces for the contemporary gentleman.</p>
+                                <a href="pages/categories.html?gender=men" class="btn btn-primary mt-auto">Shop Men's</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 mb-4 d-flex">
+                        <div class="card category-card h-100" style="width: 100%;">
+                            <img src="images/categories/accessories.jpg" alt="Accessories" class="card-img">
+                            <div class="card-body text-center d-flex flex-column">
+                                <h3 class="card-title">Accessories</h3>
+                                <p class="card-text flex-grow-1">Complete your look with our curated selection of premium accessories.</p>
+                                <a href="pages/categories.html?category=accessories" class="btn btn-primary mt-auto">Shop Accessories</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Why Choose Velvet Vogue?</h2>
+                    <p class="section-subtitle">Experience fashion like never before</p>
+                </div>
+                
+                <div class="row justify-content-center">
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="text-center h-100 p-3" style="background: white; border-radius: var(--border-radius); box-shadow: var(--shadow-sm); transition: transform 0.3s ease;">
+                            <div class="feature-icon mb-3">
+                                <i class="fas fa-shipping-fast" style="font-size: 3rem; color: var(--accent-color);"></i>
+                            </div>
+                            <h4 style="margin-bottom: 1rem; color: var(--primary-color);">Free Shipping</h4>
+                            <p style="color: var(--text-light); line-height: 1.6;">Free shipping on orders over $50. Fast and reliable delivery to your doorstep.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="text-center h-100 p-3" style="background: white; border-radius: var(--border-radius); box-shadow: var(--shadow-sm); transition: transform 0.3s ease;">
+                            <div class="feature-icon mb-3">
+                                <i class="fas fa-medal" style="font-size: 3rem; color: var(--accent-color);"></i>
+                            </div>
+                            <h4 style="margin-bottom: 1rem; color: var(--primary-color);">Premium Quality</h4>
+                            <p style="color: var(--text-light); line-height: 1.6;">Carefully selected materials and superior craftsmanship in every piece.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="text-center h-100 p-3" style="background: white; border-radius: var(--border-radius); box-shadow: var(--shadow-sm); transition: transform 0.3s ease;">
+                            <div class="feature-icon mb-3">
+                                <i class="fas fa-undo" style="font-size: 3rem; color: var(--accent-color);"></i>
+                            </div>
+                            <h4 style="margin-bottom: 1rem; color: var(--primary-color);">Easy Returns</h4>
+                            <p style="color: var(--text-light); line-height: 1.6;">30-day return policy. Shop with confidence knowing you can return any item.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="text-center h-100 p-3" style="background: white; border-radius: var(--border-radius); box-shadow: var(--shadow-sm); transition: transform 0.3s ease;">
+                            <div class="feature-icon mb-3">
+                                <i class="fas fa-headset" style="font-size: 3rem; color: var(--accent-color);"></i>
+                            </div>
+                            <h4 style="margin-bottom: 1rem; color: var(--primary-color);">24/7 Support</h4>
+                            <p style="color: var(--text-light); line-height: 1.6;">Our customer service team is here to help you with any questions or concerns.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="section" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white;">
+            <div class="container">
+                <div class="row align-center">
+                    <div class="col-lg-6">
+                        <h2>Stay Updated</h2>
+                        <p>Subscribe to our newsletter and be the first to know about new arrivals, exclusive offers, and fashion tips.</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <form class="newsletter-form" style="display: flex; gap: 1rem;">
+                            <input type="email" class="form-control" placeholder="Enter your email" required style="flex: 1;">
+                            <button type="submit" class="btn btn-primary">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Velvet Vogue</h3>
+                    <p>Premium fashion for the modern lifestyle. Discover your style with our curated collection of trendy and elegant pieces.</p>
+                    <div class="social-links" style="margin-top: 1rem;">
+                        <a href="#" style="margin-right: 1rem; font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
+                        <a href="#" style="margin-right: 1rem; font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="margin-right: 1rem; font-size: 1.5rem;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="margin-right: 1rem; font-size: 1.5rem;"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="pages/categories.html">Categories</a>
+                    <a href="pages/products.html">Products</a>
+                    <a href="pages/contact.html">Contact</a>
+                    <a href="pages/account.html">My Account</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Customer Service</h3>
+                    <a href="#">Shipping Info</a>
+                    <a href="#">Returns & Exchanges</a>
+                    <a href="#">Size Guide</a>
+                    <a href="#">FAQ</a>
+                    <a href="pages/contact.html">Support</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 11/2 Dematagoda place, Colombo-09, Colombo</p>
+                    <p><i class="fas fa-phone"></i> +94 77 867 2554</p>
+                    <p><i class="fas fa-envelope"></i> info@velvetvogue.com</p>
+                    <p><i class="fas fa-clock"></i> Mon-Sat: 9AM-8PM, Sun: 10AM-6PM</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Velvet Vogue. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script>
+        // Load featured products on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadFeaturedProductsHomepage();
+        });
+
+        function loadFeaturedProductsHomepage() {
+            const container = document.getElementById('featured-products');
+            
+            // Show loading spinner
+            container.innerHTML = '<div class="spinner"></div>';
+            
+            fetch('php/products.php?action=get_all&featured=true&limit=4')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(products => {
+                    console.log('Fetched featured products:', products);
+                    displayFeaturedProductsHomepage(products, container);
+                })
+                .catch(error => {
+                    console.error('Error loading featured products:', error);
+                    container.innerHTML = `
+                        <div class="no-products">
+                            <div class="no-products-content">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <h3>Error Loading Products</h3>
+                                <p>Unable to load featured products. Please try refreshing the page.</p>
+                            </div>
+                        </div>
+                    `;
+                });
+        }
+
+        function displayFeaturedProductsHomepage(products, container) {
+            if (!products || products.length === 0) {
+                container.innerHTML = `
+                    <div class="no-products">
+                        <div class="no-products-content">
+                            <i class="fas fa-shopping-bag"></i>
+                            <h3>No Featured Products</h3>
+                            <p>We're updating our featured collection. Check out all our products!</p>
+                            <a href="pages/products.html" class="btn btn-primary">View All Products</a>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            const productsHTML = products.map(product => {
+                // Handle different size and color formats (JSON or comma-separated)
+                let sizes = [];
+                let colors = [];
+                
+                // Parse sizes
+                if (product.sizes) {
+                    if (typeof product.sizes === 'string') {
+                        if (product.sizes.startsWith('[')) {
+                            try {
+                                sizes = JSON.parse(product.sizes);
+                            } catch (e) {
+                                sizes = product.sizes.split(',').map(s => s.trim()).filter(s => s);
+                            }
+                        } else {
+                            sizes = product.sizes.split(',').map(s => s.trim()).filter(s => s);
+                        }
+                    } else if (Array.isArray(product.sizes)) {
+                        sizes = product.sizes;
+                    }
+                }
+                
+                // Parse colors
+                if (product.colors) {
+                    if (typeof product.colors === 'string') {
+                        if (product.colors.startsWith('[')) {
+                            try {
+                                colors = JSON.parse(product.colors);
+                            } catch (e) {
+                                colors = product.colors.split(',').map(c => c.trim()).filter(c => c);
+                            }
+                        } else {
+                            colors = product.colors.split(',').map(c => c.trim()).filter(c => c);
+                        }
+                    } else if (Array.isArray(product.colors)) {
+                        colors = product.colors;
+                    }
+                }
+                
+                // Create badges
+                let badges = '';
+                if (product.is_new_arrival) badges += '<span class="product-badge new">New</span>';
+                if (product.is_on_sale) badges += '<span class="product-badge sale">Sale</span>';
+                if (product.is_featured) badges += '<span class="product-badge featured">Featured</span>';
+                
+                // Calculate display price
+                const originalPrice = parseFloat(product.price);
+                const salePrice = product.sale_price ? parseFloat(product.sale_price) : null;
+                const displayPrice = salePrice && product.is_on_sale ? salePrice : originalPrice;
+                
+                return `
+                    <div class="product-card" data-product-id="${product.id}">
+                        <div class="product-image">
+                            <img src="${product.image_url}" alt="${product.name}" loading="lazy">
+                            <div class="product-badges">${badges}</div>
+                            <div class="product-overlay">
+                                <button class="btn btn-primary add-to-cart" data-product-id="${product.id}">
+                                    <i class="fas fa-shopping-cart"></i> Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">${product.name}</h3>
+                            <p class="product-category">${product.category_name || ''}</p>
+                            <div class="product-price">
+                                ${product.is_on_sale && salePrice ? 
+                                    `<span class="sale-price">$${displayPrice.toFixed(2)}</span>
+                                     <span class="original-price">$${originalPrice.toFixed(2)}</span>` : 
+                                    `<span class="price">$${displayPrice.toFixed(2)}</span>`
+                                }
+                            </div>
+                            <div class="product-options">
+                                ${sizes.length > 0 ? `
+                                    <select id="size-${product.id}" class="size-select">
+                                        <option value="">Size</option>
+                                        ${sizes.map(size => `<option value="${size}">${size}</option>`).join('')}
+                                    </select>
+                                ` : ''}
+                                ${colors.length > 0 ? `
+                                    <select id="color-${product.id}" class="color-select">
+                                        <option value="">Color</option>
+                                        ${colors.map(color => `<option value="${color}">${color}</option>`).join('')}
+                                    </select>
+                                ` : ''}
+                                <input type="number" id="quantity-${product.id}" class="quantity-input" value="1" min="1" max="${product.stock_quantity}">
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            container.innerHTML = productsHTML;
+            
+            // Re-initialize cart functionality for new products
+            if (typeof initCartFunctionality === 'function') {
+                initCartFunctionality();
+            }
+        }
+    </script>
+</body>
+</html>

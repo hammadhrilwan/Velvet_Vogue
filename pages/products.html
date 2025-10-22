@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Velvet Vogue</title>
+    <meta name="description" content="Browse our complete collection of premium fashion items at Velvet Vogue.">
+    
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="../index.html" class="logo">
+                    Velvet <span>Vogue</span>
+                </a>
+                
+                <ul class="nav-menu">
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="categories.html" class="nav-link">Categories</a></li>
+                    <li><a href="products.html" class="nav-link active">Products</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                
+                <div class="nav-icons">
+                    <a href="account.html" class="nav-icon" title="Account">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <a href="cart.html" class="nav-icon" title="Shopping Cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <a href="../admin/login.html" class="nav-icon" title="Admin">
+                        <i class="fas fa-cog"></i>
+                    </a>
+                </div>
+                
+                <div class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <section class="page-header" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; padding: 3rem 0;">
+            <div class="container">
+                <div class="text-center">
+                    <h1>Our Products</h1>
+                    <p>Discover our complete collection of premium fashion items</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section class="section">
+            <div class="container">
+                <!-- Search and Filter Bar -->
+                <div class="filters-bar" style="background: var(--background-light); padding: 2rem; border-radius: var(--border-radius); margin-bottom: 2rem;">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="search-box">
+                                <input type="text" id="search-input" class="form-control" placeholder="Search products...">
+                                <button type="button" id="search-btn" class="btn btn-primary btn-sm" style="margin-top: 0.5rem;">
+                                    <i class="fas fa-search"></i> Search
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-8">
+                            <div class="filter-options" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                                <select id="category-filter" class="form-control" style="flex: 1; min-width: 150px;">
+                                    <option value="">All Categories</option>
+                                </select>
+                                
+                                <select id="gender-filter" class="form-control" style="flex: 1; min-width: 120px;">
+                                    <option value="">All Genders</option>
+                                    <option value="men">Men</option>
+                                    <option value="women">Women</option>
+                                    <option value="unisex">Unisex</option>
+                                </select>
+                                
+                                <select id="price-filter" class="form-control" style="flex: 1; min-width: 150px;">
+                                    <option value="">All Prices</option>
+                                    <option value="0-50">$0 - $50</option>
+                                    <option value="50-100">$50 - $100</option>
+                                    <option value="100-200">$100 - $200</option>
+                                    <option value="200+">$200+</option>
+                                </select>
+                                
+                                <button type="button" id="clear-filters" class="btn btn-secondary">
+                                    <i class="fas fa-times"></i> Clear
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="products-section">
+                    <div class="section-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                        <h2>All Products</h2>
+                        <div class="sort-options">
+                            <select id="sort-products" class="form-control" style="width: auto;">
+                                <option value="newest">Newest First</option>
+                                <option value="oldest">Oldest First</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="name">Name A-Z</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="product-grid" id="products-container">
+                        <!-- Products will be loaded here -->
+                        <div class="spinner" style="grid-column: 1 / -1; justify-self: center;"></div>
+                    </div>
+                    
+                    <!-- Load More Button -->
+                    <div class="text-center mt-4">
+                        <button id="load-more" class="btn btn-secondary" style="display: none;">
+                            Load More Products
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Velvet Vogue</h3>
+                    <p>Premium fashion for the modern lifestyle. Discover your style with our curated collection of trendy and elegant pieces.</p>
+                    <div class="social-links" style="margin-top: 1rem;">
+                        <a href="#" style="margin-right: 1rem; font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
+                        <a href="#" style="margin-right: 1rem; font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="margin-right: 1rem; font-size: 1.5rem;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="margin-right: 1rem; font-size: 1.5rem;"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="../index.html">Home</a>
+                    <a href="categories.html">Categories</a>
+                    <a href="products.html">Products</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="account.html">My Account</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Customer Service</h3>
+                    <a href="#">Shipping Info</a>
+                    <a href="#">Returns & Exchanges</a>
+                    <a href="#">Size Guide</a>
+                    <a href="#">FAQ</a>
+                    <a href="contact.html">Support</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 11/2 Dematagoda place, Colombo-09, Colombo</p>
+                    <p><i class="fas fa-phone"></i> +94 77 867 2554</p>
+                    <p><i class="fas fa-envelope"></i> info@velvetvogue.com</p>
+                    <p><i class="fas fa-clock"></i> Mon-Sat: 9AM-8PM, Sun: 10AM-6PM</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Velvet Vogue. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+    <script>
+        let allProducts = [];
+        let filteredProducts = [];
+        let currentPage = 1;
+        const productsPerPage = 12;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProducts();
+            loadCategories();
+            initializeFilters();
+            initializeCart();
+        });
+
+        function initializeCart() {
+            // Cart initialization - event listeners are handled by main.js
+            // No need for duplicate event delegation here
+            
+            // Initialize cart count
+            updateCartCount();
+        }
+
+        function loadProducts() {
+            console.log('🔄 Loading products from:', '../php/products.php?action=get_all');
+            
+            fetch('../php/products.php?action=get_all')
+                .then(response => {
+                    console.log('📡 Response status:', response.status);
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                    }
+                    return response.json();
+                })
+                .then(products => {
+                    console.log('✅ Products loaded:', products);
+                    console.log('📊 Number of products:', products.length);
+                    
+                    if (products.length > 0) {
+                        console.log('🖼️ Sample product image URL:', products[0].image_url);
+                        console.log('🔗 Full image path will be:', '../' + products[0].image_url);
+                    }
+                    
+                    allProducts = products;
+                    filteredProducts = products;
+                    displayProducts();
+                })
+                .catch(error => {
+                    console.error('❌ Error loading products:', error);
+                    document.getElementById('products-container').innerHTML = `
+                        <div style="grid-column: 1 / -1; text-align: center; padding: 2rem;">
+                            <h3>Error loading products</h3>
+                            <p>Error: ${error.message}</p>
+                            <p>Make sure XAMPP is running and the database is set up.</p>
+                            <a href="../setup-verification.html" style="color: #007bff;">🔧 Run Setup Verification</a>
+                        </div>
+                    `;
+                });
+        }
+
+        function loadCategories() {
+            fetch('../php/products.php?action=get_categories')
+                .then(response => response.json())
+                .then(categories => {
+                    const categorySelect = document.getElementById('category-filter');
+                    categories.forEach(category => {
+                        const option = document.createElement('option');
+                        option.value = category.id;
+                        option.textContent = category.name;
+                        categorySelect.appendChild(option);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading categories:', error);
+                });
+        }
+
+        function initializeFilters() {
+            // Search functionality
+            document.getElementById('search-btn').addEventListener('click', performSearch);
+            document.getElementById('search-input').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+
+            // Filter functionality
+            document.getElementById('category-filter').addEventListener('change', applyFilters);
+            document.getElementById('gender-filter').addEventListener('change', applyFilters);
+            document.getElementById('price-filter').addEventListener('change', applyFilters);
+
+            // Sort functionality
+            document.getElementById('sort-products').addEventListener('change', sortProducts);
+
+            // Clear filters
+            document.getElementById('clear-filters').addEventListener('click', clearFilters);
+
+            // Load more
+            document.getElementById('load-more').addEventListener('click', loadMoreProducts);
+        }
+
+        function performSearch() {
+            const query = document.getElementById('search-input').value.trim();
+            
+            if (query === '') {
+                filteredProducts = allProducts;
+            } else {
+                filteredProducts = allProducts.filter(product => 
+                    product.name.toLowerCase().includes(query.toLowerCase()) ||
+                    product.description.toLowerCase().includes(query.toLowerCase()) ||
+                    (product.category_name && product.category_name.toLowerCase().includes(query.toLowerCase()))
+                );
+            }
+            
+            currentPage = 1;
+            displayProducts();
+        }
+
+        function applyFilters() {
+            const categoryFilter = document.getElementById('category-filter').value;
+            const genderFilter = document.getElementById('gender-filter').value;
+            const priceFilter = document.getElementById('price-filter').value;
+
+            filteredProducts = allProducts.filter(product => {
+                let matches = true;
+
+                // Category filter
+                if (categoryFilter && product.category_id != categoryFilter) {
+                    matches = false;
+                }
+
+                // Gender filter
+                if (genderFilter && product.gender !== genderFilter) {
+                    matches = false;
+                }
+
+                // Price filter
+                if (priceFilter) {
+                    const price = parseFloat(product.price);
+                    switch (priceFilter) {
+                        case '0-50':
+                            if (price > 50) matches = false;
+                            break;
+                        case '50-100':
+                            if (price < 50 || price > 100) matches = false;
+                            break;
+                        case '100-200':
+                            if (price < 100 || price > 200) matches = false;
+                            break;
+                        case '200+':
+                            if (price < 200) matches = false;
+                            break;
+                    }
+                }
+
+                return matches;
+            });
+
+            currentPage = 1;
+            displayProducts();
+        }
+
+        function sortProducts() {
+            const sortBy = document.getElementById('sort-products').value;
+
+            filteredProducts.sort((a, b) => {
+                switch (sortBy) {
+                    case 'newest':
+                        return new Date(b.created_at) - new Date(a.created_at);
+                    case 'oldest':
+                        return new Date(a.created_at) - new Date(b.created_at);
+                    case 'price-low':
+                        return parseFloat(a.price) - parseFloat(b.price);
+                    case 'price-high':
+                        return parseFloat(b.price) - parseFloat(a.price);
+                    case 'name':
+                        return a.name.localeCompare(b.name);
+                    default:
+                        return 0;
+                }
+            });
+
+            currentPage = 1;
+            displayProducts();
+        }
+
+        function clearFilters() {
+            document.getElementById('search-input').value = '';
+            document.getElementById('category-filter').value = '';
+            document.getElementById('gender-filter').value = '';
+            document.getElementById('price-filter').value = '';
+            document.getElementById('sort-products').value = 'newest';
+
+            filteredProducts = allProducts;
+            currentPage = 1;
+            displayProducts();
+        }
+
+        function displayProducts() {
+            const container = document.getElementById('products-container');
+            const startIndex = (currentPage - 1) * productsPerPage;
+            const endIndex = startIndex + productsPerPage;
+            const productsToShow = filteredProducts.slice(0, endIndex);
+
+            if (productsToShow.length === 0) {
+                container.innerHTML = '<p class="text-center" style="grid-column: 1 / -1;">No products found matching your criteria.</p>';
+                document.getElementById('load-more').style.display = 'none';
+                return;
+            }
+
+            const productsHTML = productsToShow.map(product => {
+                // Parse sizes and colors from comma-separated strings
+                const sizes = product.sizes ? product.sizes.split(',').map(s => s.trim()).filter(s => s) : [];
+                const colors = product.colors ? product.colors.split(',').map(c => c.trim()).filter(c => c) : [];
+                
+                return `
+                    <div class="card product-card fade-in">
+                        ${product.is_featured ? '<div class="product-badge">Featured</div>' : ''}
+                        ${product.is_new_arrival ? '<div class="product-badge new">New</div>' : ''}
+                        ${product.is_on_sale ? '<div class="product-badge sale">Sale</div>' : ''}
+                        
+                        <img src="../${product.image_url}" alt="${product.name}" class="card-img" loading="lazy" 
+                             onload="console.log('✅ Image loaded:', '${product.name}')" 
+                             onerror="console.error('❌ Image failed:', '../${product.image_url}'); this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPk5vIEltYWdlPC90ZXh0Pjwvc3ZnPg==';">
+                        
+                        <div class="card-body">
+                            <h5 class="card-title">${product.name}</h5>
+                            <p class="card-text">${product.description.substring(0, 100)}...</p>
+                            <p class="category-badge" style="color: var(--accent-color); font-size: 0.9rem; font-weight: 500;">
+                                ${product.category_name || 'Uncategorized'}
+                            </p>
+                            
+                            <div class="product-options mb-2">
+                                ${sizes.length > 0 ? `
+                                    <select id="size-${product.id}" class="form-control mb-1" style="font-size: 0.9rem;">
+                                        <option value="">Select Size</option>
+                                        ${sizes.map(size => `<option value="${size}">${size}</option>`).join('')}
+                                    </select>
+                                ` : ''}
+                                
+                                ${colors.length > 0 ? `
+                                    <select id="color-${product.id}" class="form-control mb-1" style="font-size: 0.9rem;">
+                                        <option value="">Select Color</option>
+                                        ${colors.map(color => `<option value="${color}">${color}</option>`).join('')}
+                                    </select>
+                                ` : ''}
+                            </div>
+                            
+                            <div class="card-price">
+                                ${product.is_on_sale && product.sale_price ? 
+                                    `$${product.sale_price} <span class="original-price">$${product.price}</span>` : 
+                                    `$${product.price}`
+                                }
+                            </div>
+                            
+                            <div class="product-actions" style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary add-to-cart" data-product-id="${product.id}" style="flex: 1;">
+                                    <i class="fas fa-shopping-cart"></i> Add to Cart
+                                </button>
+                                <button class="btn btn-secondary" onclick="viewProduct(${product.id})" style="flex: 0 0 auto;">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            container.innerHTML = productsHTML;
+
+            // Show/hide load more button
+            const loadMoreBtn = document.getElementById('load-more');
+            if (endIndex < filteredProducts.length) {
+                loadMoreBtn.style.display = 'block';
+            } else {
+                loadMoreBtn.style.display = 'none';
+            }
+
+            // Re-initialize cart functionality
+            initCartFunctionality();
+        }
+
+        function loadMoreProducts() {
+            currentPage++;
+            displayProducts();
+        }
+
+        function viewProduct(productId) {
+            // Find the product in our loaded products
+            const product = allProducts.find(p => p.id == productId);
+            if (!product) {
+                alert('Product not found');
+                return;
+            }
+            
+            // Create and show product detail modal
+            showProductModal(product);
+        }
+        
+        function showProductModal(product) {
+            // Parse sizes and colors from comma-separated strings
+            const sizes = product.sizes ? product.sizes.split(',').map(s => s.trim()).filter(s => s) : [];
+            const colors = product.colors ? product.colors.split(',').map(c => c.trim()).filter(c => c) : [];
+            
+            const modalHTML = `
+                <div class="modal-overlay" id="product-modal" onclick="closeProductModal(event)">
+                    <div class="modal-content product-modal">
+                        <button class="modal-close" onclick="closeProductModal()">&times;</button>
+                        
+                        <div class="product-detail-grid">
+                            <div class="product-image-section">
+                                <img src="../${product.image_url}" alt="${product.name}" class="product-detail-image"
+                                     onload="console.log('✅ Modal image loaded:', '${product.name}')"
+                                     onerror="console.error('❌ Modal image failed:', '../${product.image_url}'); this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyMCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPk5vIEltYWdlPC90ZXh0Pjwvc3ZnPg==';">
+                            </div>
+                            
+                            <div class="product-info-section">
+                                <h1 class="product-title">${product.name}</h1>
+                                <p class="product-category">${product.category_name || 'Uncategorized'}</p>
+                                <div class="product-price-large">$${product.price}</div>
+                                
+                                <div class="product-description">
+                                    <p>${product.description}</p>
+                                </div>
+                                
+                                <div class="product-options-section">
+                                    ${sizes.length > 0 ? `
+                                        <div class="option-group">
+                                            <label>Size:</label>
+                                            <select id="modal-size-${product.id}" class="form-control">
+                                                <option value="">Select Size</option>
+                                                ${sizes.map(size => `<option value="${size}">${size}</option>`).join('')}
+                                            </select>
+                                        </div>
+                                    ` : ''}
+                                    
+                                    ${colors.length > 0 ? `
+                                        <div class="option-group">
+                                            <label>Color:</label>
+                                            <select id="modal-color-${product.id}" class="form-control">
+                                                <option value="">Select Color</option>
+                                                ${colors.map(color => `<option value="${color}">${color}</option>`).join('')}
+                                            </select>
+                                        </div>
+                                    ` : ''}
+                                    
+                                    <div class="option-group">
+                                        <label>Quantity:</label>
+                                        <input type="number" id="modal-quantity-${product.id}" class="form-control" value="1" min="1" max="10">
+                                    </div>
+                                </div>
+                                
+                                <div class="product-actions-section">
+                                    <button class="btn btn-primary btn-lg" onclick="addToCartFromModal(${product.id})">
+                                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Add modal to page
+            document.body.insertAdjacentHTML('beforeend', modalHTML);
+            
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeProductModal(event) {
+            if (event && event.target !== event.currentTarget && !event.target.classList.contains('modal-close')) {
+                return;
+            }
+            
+            const modal = document.getElementById('product-modal');
+            if (modal) {
+                modal.remove();
+                document.body.style.overflow = 'auto';
+            }
+        }
+        
+        function addToCartFromModal(productId) {
+            const sizeSelect = document.getElementById(`modal-size-${productId}`);
+            const colorSelect = document.getElementById(`modal-color-${productId}`);
+            const quantityInput = document.getElementById(`modal-quantity-${productId}`);
+            
+            const size = sizeSelect ? sizeSelect.value : '';
+            const color = colorSelect ? colorSelect.value : '';
+            const quantity = quantityInput ? parseInt(quantityInput.value) : 1;
+            
+            // Add to cart using existing function
+            addToCart(productId, size, color, quantity);
+            
+            // Close modal
+            closeProductModal();
+        }
+        
+        // Add to cart function
+        function addToCart(productId, size, color, quantity) {
+            const product = allProducts.find(p => p.id == productId);
+            if (!product) {
+                showNotification('Product not found', 'error');
+                return;
+            }
+            
+            const formData = new FormData();
+            formData.append('action', 'add_to_cart');
+            formData.append('product_id', productId);
+            formData.append('size', size || '');
+            formData.append('color', color || '');
+            formData.append('quantity', quantity || 1);
+            
+            fetch('../php/cart.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showNotification(`${product.name} added to cart!`, 'success');
+                    updateCartCount();
+                } else {
+                    showNotification(data.message || 'Failed to add to cart', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showNotification('Error adding to cart', 'error');
+            });
+        }
+        
+        // Update cart count in header
+        function updateCartCount() {
+            fetch('../php/cart.php?action=get_count')
+                .then(response => response.json())
+                .then(data => {
+                    const cartCount = document.querySelector('.cart-count');
+                    if (cartCount && data.count !== undefined) {
+                        cartCount.textContent = data.count;
+                    }
+                })
+                .catch(error => console.error('Error updating cart count:', error));
+        }
+        
+        // Show notification function
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.textContent = message;
+            
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#28a745' : type === 'error' ? '#dc3545' : '#007bff'};
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 5px;
+                z-index: 10000;
+                opacity: 0;
+                transform: translateX(100%);
+                transition: all 0.3s ease;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.style.opacity = '1';
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

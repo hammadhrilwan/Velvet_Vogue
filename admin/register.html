@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Registration - Velvet Vogue</title>
+    <meta name="description" content="Admin registration for Velvet Vogue management system.">
+    
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); min-height: 100vh; display: flex; align-items: center; padding: 2rem 0;">
+    <div class="container">
+        <div class="row justify-center">
+            <div class="col-lg-5 col-md-7">
+                <div class="admin-register-card" style="background: white; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-lg); padding: 3rem; text-align: center;">
+                    <!-- Logo -->
+                    <div class="admin-logo" style="margin-bottom: 2rem;">
+                        <a href="../index.html" class="logo" style="font-size: 2.5rem;">
+                            Velvet <span>Vogue</span>
+                        </a>
+                        <div style="margin-top: 0.5rem; color: var(--text-light); font-size: 1.1rem;">
+                            <i class="fas fa-user-plus"></i> Admin Registration
+                        </div>
+                    </div>
+
+                    <!-- Warning Message -->
+                    <div id="admin-status-check" class="alert alert-info" style="text-align: left; margin-bottom: 2rem;">
+                        <i class="fas fa-info-circle"></i>
+                        <strong>Checking admin access...</strong> Please wait while we verify your permissions.
+                    </div>
+
+                    <div id="bootstrap-mode" class="alert alert-warning" style="text-align: left; margin-bottom: 2rem; display: none;">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <strong>Bootstrap Mode:</strong> No admin accounts exist. You can create the first admin account.
+                    </div>
+
+                    <div id="requires-login" class="alert alert-danger" style="text-align: left; margin-bottom: 2rem; display: none;">
+                        <i class="fas fa-lock"></i>
+                        <strong>Login Required:</strong> You must be logged in as an admin to create new admin accounts.
+                        <div style="margin-top: 1rem;">
+                            <a href="login.html" class="btn btn-primary">
+                                <i class="fas fa-sign-in-alt"></i> Login as Admin
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Registration Form -->
+                    <form id="admin-register-form" data-validate style="text-align: left;">
+                        <div class="form-group">
+                            <label class="form-label">Full Name</label>
+                            <div style="position: relative;">
+                                <input type="text" name="full_name" class="form-control" required style="padding-left: 3rem;">
+                                <i class="fas fa-user" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-light);"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Username</label>
+                            <div style="position: relative;">
+                                <input type="text" name="username" class="form-control" required style="padding-left: 3rem;" minlength="4">
+                                <i class="fas fa-at" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-light);"></i>
+                            </div>
+                            <small class="form-text">Choose a unique username (minimum 4 characters)</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Email Address</label>
+                            <div style="position: relative;">
+                                <input type="email" name="email" class="form-control" required style="padding-left: 3rem;">
+                                <i class="fas fa-envelope" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-light);"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Password</label>
+                            <div style="position: relative;">
+                                <input type="password" name="password" class="form-control" required style="padding-left: 3rem;" minlength="8">
+                                <i class="fas fa-lock" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-light);"></i>
+                            </div>
+                            <small class="form-text">Password must be at least 8 characters long</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Confirm Password</label>
+                            <div style="position: relative;">
+                                <input type="password" name="confirm_password" class="form-control" required style="padding-left: 3rem;">
+                                <i class="fas fa-lock" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-light);"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Admin Role</label>
+                            <select name="role" class="form-control" required>
+                                <option value="">Select Role</option>
+                                <option value="admin">Administrator</option>
+                                <option value="manager">Manager</option>
+                                <option value="staff">Staff</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">
+                                <input type="checkbox" name="terms" required> 
+                                I understand the responsibilities of admin access and agree to use it responsibly
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; margin-top: 1rem;">
+                            <i class="fas fa-user-plus"></i> Create Admin Account
+                        </button>
+                    </form>
+
+                    <!-- Login Link -->
+                    <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border-color); text-align: center;">
+                        <p style="color: var(--text-light); margin-bottom: 1rem;">Already have an admin account?</p>
+                        <a href="login.html" class="btn btn-secondary">
+                            <i class="fas fa-sign-in-alt"></i> Login to Admin Panel
+                        </a>
+                    </div>
+
+                    <!-- Back to Site -->
+                    <div style="margin-top: 1.5rem; text-align: center;">
+                        <a href="../index.html" style="color: var(--text-light); font-size: 0.9rem;">
+                            <i class="fas fa-arrow-left"></i> Back to Website
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check admin status first
+            checkAdminStatus();
+            // Initialize registration form
+            document.getElementById('admin-register-form').addEventListener('submit', handleAdminRegistration);
+        });
+
+        async function checkAdminStatus() {
+            try {
+                const response = await fetch('../php/auth.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: 'action=check_admin_status'
+                });
+                
+                const data = await response.json();
+                
+                const statusCheck = document.getElementById('admin-status-check');
+                const bootstrapMode = document.getElementById('bootstrap-mode');
+                const requiresLogin = document.getElementById('requires-login');
+                const registerForm = document.getElementById('admin-register-form');
+                
+                statusCheck.style.display = 'none';
+                
+                if (data.can_register) {
+                    if (data.is_bootstrap) {
+                        bootstrapMode.style.display = 'block';
+                    }
+                    registerForm.style.display = 'block';
+                } else {
+                    requiresLogin.style.display = 'block';
+                    registerForm.style.display = 'none';
+                }
+                
+            } catch (error) {
+                console.error('Error checking admin status:', error);
+                document.getElementById('admin-status-check').innerHTML = `
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <strong>Error:</strong> Could not verify admin status. Please ensure the server is running.
+                `;
+            }
+        }
+
+        function handleAdminRegistration(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            
+            // Check password confirmation
+            if (formData.get('password') !== formData.get('confirm_password')) {
+                showNotification('Passwords do not match', 'error');
+                return;
+            }
+            
+            // Validate password strength
+            const password = formData.get('password');
+            if (password.length < 8) {
+                showNotification('Password must be at least 8 characters long', 'error');
+                return;
+            }
+            
+            formData.append('action', 'admin_register');
+
+            fetch('../php/auth.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showNotification('Admin account created successfully! You can now login.', 'success');
+                    
+                    // Reset form and redirect to login
+                    e.target.reset();
+                    setTimeout(() => {
+                        window.location.href = 'login.html';
+                    }, 2000);
+                } else {
+                    showNotification(data.message || 'Registration failed', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Admin registration error:', error);
+                showNotification('Registration error occurred', 'error');
+            });
+        }
+    </script>
+
+    <style>
+        .admin-register-card {
+            animation: slideInUp 0.6s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.25);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .form-text {
+            color: var(--text-light);
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+
+        .alert-warning {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            border-radius: var(--border-radius-sm);
+            padding: 1rem;
+        }
+    </style>
+</body>
+</html>

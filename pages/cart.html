@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Velvet Vogue</title>
+    <meta name="description" content="Review your selected items and proceed to checkout at Velvet Vogue.">
+    
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="../index.html" class="logo">
+                    Velvet <span>Vogue</span>
+                </a>
+                
+                <ul class="nav-menu">
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="categories.html" class="nav-link">Categories</a></li>
+                    <li><a href="products.html" class="nav-link">Products</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                
+                <div class="nav-icons">
+                    <a href="account.html" class="nav-icon" title="Account">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <a href="cart.html" class="nav-icon active" title="Shopping Cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <a href="../admin/login.html" class="nav-icon" title="Admin">
+                        <i class="fas fa-cog"></i>
+                    </a>
+                </div>
+                
+                <div class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <section class="page-header" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; padding: 3rem 0;">
+            <div class="container">
+                <div class="text-center">
+                    <h1><i class="fas fa-shopping-cart"></i> Shopping Cart</h1>
+                    <p>Review your selected items and proceed to checkout</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cart Content -->
+        <section class="section">
+            <div class="container">
+                <div class="cart-container">
+                    <!-- Empty Cart Message -->
+                    <div id="empty-cart" class="text-center" style="display: none; padding: 3rem;">
+                        <i class="fas fa-shopping-cart" style="font-size: 4rem; color: var(--text-light); margin-bottom: 1rem;"></i>
+                        <h3>Your cart is empty</h3>
+                        <p>Looks like you haven't added any items to your cart yet.</p>
+                        <a href="products.html" class="btn btn-primary">Start Shopping</a>
+                    </div>
+
+                    <!-- Cart Items -->
+                    <div id="cart-content" class="row">
+                        <div class="col-lg-8">
+                            <div class="cart-items-section">
+                                <div class="section-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 2px solid var(--border-color);">
+                                    <h2>Cart Items</h2>
+                                    <button id="clear-cart" class="btn btn-secondary btn-sm">
+                                        <i class="fas fa-trash"></i> Clear Cart
+                                    </button>
+                                </div>
+                                
+                                <div id="cart-items-container">
+                                    <!-- Cart items will be loaded here -->
+                                    <div class="spinner"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="cart-summary" style="background: var(--background-light); padding: 2rem; border-radius: var(--border-radius); position: sticky; top: 2rem;">
+                                <h3 style="margin-bottom: 1.5rem;">Order Summary</h3>
+                                
+                                <div class="summary-row" style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                                    <span>Subtotal:</span>
+                                    <span id="cart-subtotal">$0.00</span>
+                                </div>
+                                
+                                <div class="summary-row" style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                                    <span>Shipping:</span>
+                                    <span id="shipping-cost">Free</span>
+                                </div>
+                                
+                                <div class="summary-row" style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                                    <span>Tax:</span>
+                                    <span id="tax-amount">$0.00</span>
+                                </div>
+                                
+                                <hr style="margin: 1.5rem 0;">
+                                
+                                <div class="summary-row total" style="display: flex; justify-content: space-between; font-size: 1.25rem; font-weight: 600; color: var(--primary-color);">
+                                    <span>Total:</span>
+                                    <span id="cart-total">$0.00</span>
+                                </div>
+                                
+                                <div class="cart-actions" style="margin-top: 2rem;">
+                                    <button id="checkout-btn" class="btn btn-primary btn-lg" style="width: 100%; margin-bottom: 1rem;" disabled>
+                                        <i class="fas fa-credit-card"></i> Proceed to Checkout
+                                    </button>
+                                    
+                                    <a href="products.html" class="btn btn-outline" style="width: 100%; text-align: center; display: block;">
+                                        <i class="fas fa-arrow-left"></i> Continue Shopping
+                                    </a>
+                                </div>
+                                
+                                <!-- Promo Code Section -->
+                                <div class="promo-section" style="margin-top: 2rem;">
+                                    <h4>Promo Code</h4>
+                                    <div class="promo-input" style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                                        <input type="text" id="promo-code" class="form-control" placeholder="Enter promo code">
+                                        <button id="apply-promo" class="btn btn-secondary">Apply</button>
+                                    </div>
+                                    <div id="promo-message" style="margin-top: 0.5rem; font-size: 0.9rem;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related Products -->
+        <section class="section" style="background: var(--background-light);">
+            <div class="container">
+                <div class="section-title">
+                    <h2>You Might Also Like</h2>
+                    <p class="section-subtitle">Complete your look with these recommended items</p>
+                </div>
+                
+                <div class="product-grid" id="related-products">
+                    <!-- Related products will be loaded here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Velvet Vogue</h3>
+                    <p>Premium fashion for the modern lifestyle. Discover your style with our curated collection of trendy and elegant pieces.</p>
+                    <div class="social-links" style="margin-top: 1rem;">
+                        <a href="#" style="margin-right: 1rem; font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
+                        <a href="#" style="margin-right: 1rem; font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="margin-right: 1rem; font-size: 1.5rem;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="margin-right: 1rem; font-size: 1.5rem;"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="../index.html">Home</a>
+                    <a href="categories.html">Categories</a>
+                    <a href="products.html">Products</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="account.html">My Account</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Customer Service</h3>
+                    <a href="#">Shipping Info</a>
+                    <a href="#">Returns & Exchanges</a>
+                    <a href="#">Size Guide</a>
+                    <a href="#">FAQ</a>
+                    <a href="contact.html">Support</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 11/2 Dematagoda place, Colombo-09, Colombo</p>
+                    <p><i class="fas fa-phone"></i> +94 77 867 2554</p>
+                    <p><i class="fas fa-envelope"></i> info@velvetvogue.com</p>
+                    <p><i class="fas fa-clock"></i> Mon-Sat: 9AM-8PM, Sun: 10AM-6PM</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Velvet Vogue. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999;">
+        <div class="modal-content" style="background: white; margin: 5% auto; padding: 2rem; border-radius: var(--border-radius); max-width: 500px; position: relative;">
+            <span class="close" style="position: absolute; right: 1rem; top: 1rem; font-size: 1.5rem; cursor: pointer;">&times;</span>
+            
+            <h3 style="margin-bottom: 1.5rem;">Checkout</h3>
+            
+            <form id="checkout-form">
+                <div class="form-group">
+                    <label class="form-label">Payment Method</label>
+                    <select name="payment_method" class="form-control" required>
+                        <option value="">Select Payment Method</option>
+                        <option value="credit_card">Credit Card</option>
+                        <option value="debit_card">Debit Card</option>
+                        <option value="paypal">PayPal</option>
+                        <option value="cash_on_delivery">Cash on Delivery</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Shipping Address</label>
+                    <textarea name="shipping_address" class="form-control" rows="3" placeholder="Enter your complete shipping address" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Special Instructions (Optional)</label>
+                    <textarea name="notes" class="form-control" rows="2" placeholder="Any special delivery instructions"></textarea>
+                </div>
+                
+                <div class="checkout-summary" style="background: var(--background-light); padding: 1rem; border-radius: var(--border-radius-sm); margin: 1.5rem 0;">
+                    <div style="display: flex; justify-content: space-between; font-weight: 600;">
+                        <span>Order Total:</span>
+                        <span id="checkout-total">$0.00</span>
+                    </div>
+                </div>
+                
+                <div class="modal-actions" style="display: flex; gap: 1rem; margin-top: 2rem;">
+                    <button type="button" class="btn btn-secondary" onclick="closeCheckoutModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary" style="flex: 1;">Place Order</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+    <script>
+        let cartItems = [];
+        let subtotal = 0;
+        let tax = 0;
+        let total = 0;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCartItems();
+            loadRelatedProducts();
+            initializeCartEvents();
+        });
+
+        function initializeCartEvents() {
+            // Clear cart button
+            document.getElementById('clear-cart').addEventListener('click', function() {
+                if (confirm('Are you sure you want to clear your cart?')) {
+                    clearCart();
+                }
+            });
+
+            // Checkout button
+            document.getElementById('checkout-btn').addEventListener('click', function() {
+                if (cartItems.length === 0) {
+                    showNotification('Your cart is empty', 'error');
+                    return;
+                }
+                openCheckoutModal();
+            });
+
+            // Promo code
+            document.getElementById('apply-promo').addEventListener('click', applyPromoCode);
+
+            // Checkout form
+            document.getElementById('checkout-form').addEventListener('submit', processCheckout);
+
+            // Close modal when clicking outside
+            document.getElementById('checkout-modal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeCheckoutModal();
+                }
+            });
+
+            // Close modal button
+            document.querySelector('.close').addEventListener('click', closeCheckoutModal);
+        }
+
+        function loadCartItems() {
+            fetch('../php/cart.php?action=get_items')
+                .then(response => response.json())
+                .then(data => {
+                    cartItems = Object.values(data.items || {});
+                    displayCartItems();
+                    calculateTotals();
+                })
+                .catch(error => {
+                    console.error('Error loading cart items:', error);
+                    showNotification('Error loading cart items', 'error');
+                });
+        }
+
+        function displayCartItems() {
+            const container = document.getElementById('cart-items-container');
+            const emptyCart = document.getElementById('empty-cart');
+            const cartContent = document.getElementById('cart-content');
+
+            if (cartItems.length === 0) {
+                emptyCart.style.display = 'block';
+                cartContent.style.display = 'none';
+                return;
+            }
+
+            emptyCart.style.display = 'none';
+            cartContent.style.display = 'flex';
+
+            const itemsHTML = cartItems.map((item, index) => `
+                <div class="cart-item" style="display: flex; align-items: center; padding: 1.5rem; border: 1px solid var(--border-color); border-radius: var(--border-radius); margin-bottom: 1rem; background: white;">
+                    <div class="item-image" style="flex: 0 0 100px; margin-right: 1rem;">
+                        <img src="../${item.image_url}" alt="${item.name}" style="width: 100%; height: 100px; object-fit: cover; border-radius: var(--border-radius-sm);">
+                    </div>
+                    
+                    <div class="item-details" style="flex: 1; margin-right: 1rem;">
+                        <h4 style="margin-bottom: 0.5rem;">${item.name}</h4>
+                        <p style="color: var(--text-light); margin-bottom: 0.5rem;">
+                            ${item.size ? `Size: ${item.size}` : ''} 
+                            ${item.size && item.color ? ' • ' : ''}
+                            ${item.color ? `Color: ${item.color}` : ''}
+                        </p>
+                        <p style="font-weight: 600; color: var(--accent-color);">$${parseFloat(item.price).toFixed(2)}</p>
+                    </div>
+                    
+                    <div class="item-quantity" style="flex: 0 0 120px; margin-right: 1rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem;">Quantity:</label>
+                        <div style="display: flex; align-items: center; border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); overflow: hidden;">
+                            <button class="quantity-btn" onclick="updateItemQuantity('${item.product_id}', '${item.size}', '${item.color}', ${item.quantity - 1})" style="border: none; background: var(--background-light); padding: 0.5rem; cursor: pointer;">-</button>
+                            <span style="padding: 0.5rem 1rem; background: white; border-left: 1px solid var(--border-color); border-right: 1px solid var(--border-color);">${item.quantity}</span>
+                            <button class="quantity-btn" onclick="updateItemQuantity('${item.product_id}', '${item.size}', '${item.color}', ${item.quantity + 1})" style="border: none; background: var(--background-light); padding: 0.5rem; cursor: pointer;">+</button>
+                        </div>
+                    </div>
+                    
+                    <div class="item-total" style="flex: 0 0 100px; text-align: right; margin-right: 1rem;">
+                        <p style="font-weight: 600; font-size: 1.1rem;">$${(parseFloat(item.price) * item.quantity).toFixed(2)}</p>
+                    </div>
+                    
+                    <div class="item-actions" style="flex: 0 0 auto;">
+                        <button class="btn btn-sm" onclick="removeCartItem('${item.product_id}', '${item.size}', '${item.color}')" style="background: var(--error-color); color: white; border: none; padding: 0.5rem;">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+
+            container.innerHTML = itemsHTML;
+        }
+
+        function updateItemQuantity(productId, size, color, newQuantity) {
+            if (newQuantity <= 0) {
+                removeCartItem(productId, size, color);
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('action', 'update_quantity');
+            formData.append('product_id', productId);
+            formData.append('size', size);
+            formData.append('color', color);
+            formData.append('quantity', newQuantity);
+
+            fetch('../php/cart.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    loadCartItems(); // Reload cart items
+                    updateCartCount();
+                } else {
+                    showNotification(data.message || 'Error updating quantity', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error updating quantity:', error);
+                showNotification('Error updating quantity', 'error');
+            });
+        }
+
+        function removeCartItem(productId, size, color) {
+            if (!confirm('Are you sure you want to remove this item from your cart?')) {
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('action', 'remove_from_cart');
+            formData.append('product_id', productId);
+            formData.append('size', size);
+            formData.append('color', color);
+
+            fetch('../php/cart.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    loadCartItems(); // Reload cart items
+                    updateCartCount();
+                    showNotification('Item removed from cart', 'success');
+                } else {
+                    showNotification(data.message || 'Error removing item', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error removing item:', error);
+                showNotification('Error removing item', 'error');
+            });
+        }
+
+        function clearCart() {
+            const formData = new FormData();
+            formData.append('action', 'clear_cart');
+
+            fetch('../php/cart.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    loadCartItems(); // Reload cart items
+                    updateCartCount();
+                    showNotification('Cart cleared', 'success');
+                } else {
+                    showNotification(data.message || 'Error clearing cart', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error clearing cart:', error);
+                showNotification('Error clearing cart', 'error');
+            });
+        }
+
+        function calculateTotals() {
+            subtotal = cartItems.reduce((sum, item) => sum + (parseFloat(item.price) * item.quantity), 0);
+            tax = subtotal * 0.08; // 8% tax
+            total = subtotal + tax;
+
+            // Free shipping on orders over $50
+            const shippingCost = subtotal >= 50 ? 0 : 9.99;
+            total += shippingCost;
+
+            // Update display
+            document.getElementById('cart-subtotal').textContent = `$${subtotal.toFixed(2)}`;
+            document.getElementById('tax-amount').textContent = `$${tax.toFixed(2)}`;
+            document.getElementById('shipping-cost').textContent = shippingCost === 0 ? 'Free' : `$${shippingCost.toFixed(2)}`;
+            document.getElementById('cart-total').textContent = `$${total.toFixed(2)}`;
+            document.getElementById('checkout-total').textContent = `$${total.toFixed(2)}`;
+
+            // Enable/disable checkout button
+            const checkoutBtn = document.getElementById('checkout-btn');
+            checkoutBtn.disabled = cartItems.length === 0;
+        }
+
+        function applyPromoCode() {
+            const promoCode = document.getElementById('promo-code').value.trim();
+            const messageElement = document.getElementById('promo-message');
+
+            if (!promoCode) {
+                messageElement.textContent = 'Please enter a promo code';
+                messageElement.style.color = 'var(--error-color)';
+                return;
+            }
+
+            // Simulate promo code validation
+            const promoCodes = {
+                'SAVE10': { discount: 0.10, type: 'percentage' },
+                'SAVE20': { discount: 0.20, type: 'percentage' },
+                'FLAT5': { discount: 5, type: 'fixed' }
+            };
+
+            if (promoCodes[promoCode.toUpperCase()]) {
+                const promo = promoCodes[promoCode.toUpperCase()];
+                let discount = 0;
+
+                if (promo.type === 'percentage') {
+                    discount = subtotal * promo.discount;
+                } else {
+                    discount = promo.discount;
+                }
+
+                total -= discount;
+                document.getElementById('cart-total').textContent = `$${total.toFixed(2)}`;
+                document.getElementById('checkout-total').textContent = `$${total.toFixed(2)}`;
+
+                messageElement.textContent = `Promo code applied! You saved $${discount.toFixed(2)}`;
+                messageElement.style.color = 'var(--success-color)';
+                document.getElementById('promo-code').disabled = true;
+                document.getElementById('apply-promo').disabled = true;
+            } else {
+                messageElement.textContent = 'Invalid promo code';
+                messageElement.style.color = 'var(--error-color)';
+            }
+        }
+
+        function openCheckoutModal() {
+            document.getElementById('checkout-modal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById('checkout-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function processCheckout(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const checkoutData = {
+                items: cartItems,
+                total: total,
+                payment_method: formData.get('payment_method'),
+                shipping_address: formData.get('shipping_address'),
+                notes: formData.get('notes')
+            };
+
+            // Simulate order processing
+            showNotification('Processing your order...', 'info');
+            
+            setTimeout(() => {
+                // Clear cart after successful order
+                clearCart();
+                closeCheckoutModal();
+                showNotification('Order placed successfully! You will receive a confirmation email shortly.', 'success');
+                
+                // Reset form
+                e.target.reset();
+            }, 2000);
+        }
+
+        function loadRelatedProducts() {
+            fetch('../php/products.php?action=get_all&limit=4')
+                .then(response => response.json())
+                .then(products => {
+                    displayRelatedProducts(products);
+                })
+                .catch(error => {
+                    console.error('Error loading related products:', error);
+                });
+        }
+
+        function displayRelatedProducts(products) {
+            const container = document.getElementById('related-products');
+            
+            const productsHTML = products.map(product => {
+                // Parse sizes and colors from comma-separated strings
+                const sizes = product.sizes ? product.sizes.split(',').map(s => s.trim()).filter(s => s) : [];
+                const colors = product.colors ? product.colors.split(',').map(c => c.trim()).filter(c => c) : [];
+                
+                return `
+                    <div class="card product-card">
+                        <img src="../${product.image_url}" alt="${product.name}" class="card-img">
+                        <div class="card-body">
+                            <h5 class="card-title">${product.name}</h5>
+                            <div class="card-price">$${product.price}</div>
+                            
+                            <div class="product-options mb-2">
+                                ${sizes.length > 0 ? `
+                                    <select id="size-${product.id}" class="form-control mb-1">
+                                        <option value="">Select Size</option>
+                                        ${sizes.map(size => `<option value="${size}">${size}</option>`).join('')}
+                                    </select>
+                                ` : ''}
+                                
+                                ${colors.length > 0 ? `
+                                    <select id="color-${product.id}" class="form-control mb-1">
+                                        <option value="">Select Color</option>
+                                        ${colors.map(color => `<option value="${color}">${color}</option>`).join('')}
+                                    </select>
+                                ` : ''}
+                            </div>
+                            
+                            <button class="btn btn-primary add-to-cart" data-product-id="${product.id}">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            container.innerHTML = productsHTML;
+            
+            // Re-initialize cart functionality for related products
+            initCartFunctionality();
+        }
+    </script>
+
+    <style>
+        .cart-item {
+            transition: all 0.3s ease;
+        }
+
+        .cart-item:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .quantity-btn:hover {
+            background: var(--primary-color) !important;
+            color: white;
+        }
+
+        .modal {
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .cart-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .cart-item > div {
+                margin-right: 0 !important;
+                margin-bottom: 1rem;
+            }
+            
+            .item-quantity {
+                flex: none !important;
+            }
+        }
+    </style>
+</body>
+</html>

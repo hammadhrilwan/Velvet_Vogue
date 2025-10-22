@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.velvetvogue.com/sitemap.xml
+
+# Disallow admin pages from crawling
+Disallow: /admin/
+Disallow: /php/
+
+# Allow product images to be crawled
+Allow: /images/
+
+# Block access to configuration files
+Disallow: /*.sql$
+Disallow: /database_setup.sql
+
+# Crawl delay
+Crawl-delay: 1

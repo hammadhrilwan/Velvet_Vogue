@@ -1,0 +1,38 @@
+# PHP
+*.log
+*.tmp
+
+# Database
+*.db
+*.sqlite
+
+# IDE/Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Local configuration files
+config/local.php
+
+# Upload directories (if any)
+uploads/
+temp/
+
+# Cache directories
+cache/
+tmp/
+
+# Backup files
+*.bak
+*.backup

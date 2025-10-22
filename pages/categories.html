@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories - Velvet Vogue</title>
+    <meta name="description" content="Shop by category at Velvet Vogue. Find exactly what you're looking for with our organized product categories.">
+    
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="../index.html" class="logo">
+                    Velvet <span>Vogue</span>
+                </a>
+                
+                <ul class="nav-menu">
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="categories.html" class="nav-link active">Categories</a></li>
+                    <li><a href="products.html" class="nav-link">Products</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                
+                <div class="nav-icons">
+                    <a href="account.html" class="nav-icon" title="Account">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <a href="cart.html" class="nav-icon" title="Shopping Cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <a href="../admin/login.html" class="nav-icon" title="Admin">
+                        <i class="fas fa-cog"></i>
+                    </a>
+                </div>
+                
+                <div class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <section class="page-header" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; padding: 3rem 0;">
+            <div class="container">
+                <div class="text-center">
+                    <h1>Shop by Category</h1>
+                    <p>Find exactly what you're looking for in our organized collections</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Overview -->
+        <section class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Browse Categories</h2>
+                    <p class="section-subtitle">Explore our organized product collections</p>
+                </div>
+                
+                <div class="categories-grid" id="categories-container">
+                    <!-- Categories will be loaded here -->
+                    <div class="spinner"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filters Section -->
+        <section class="section" style="background: var(--background-light);">
+            <div class="container">
+                <div class="filters-section">
+                    <h2>Filter Products</h2>
+                    <form id="filter-form" class="filter-form" style="background: white; padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow-sm);">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="form-label">Category</label>
+                                    <select name="category" id="category-select" class="form-control">
+                                        <option value="">All Categories</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="form-label">Gender</label>
+                                    <select name="gender" class="form-control">
+                                        <option value="">All Genders</option>
+                                        <option value="men">Men</option>
+                                        <option value="women">Women</option>
+                                        <option value="unisex">Unisex</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="form-label">Size</label>
+                                    <select name="size" class="form-control">
+                                        <option value="">All Sizes</option>
+                                        <option value="XS">XS</option>
+                                        <option value="S">S</option>
+                                        <option value="M">M</option>
+                                        <option value="L">L</option>
+                                        <option value="XL">XL</option>
+                                        <option value="28">28</option>
+                                        <option value="30">30</option>
+                                        <option value="32">32</option>
+                                        <option value="34">34</option>
+                                        <option value="36">36</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="form-label">Price Range</label>
+                                    <div class="price-range-container">
+                                        <input type="range" id="price-range" name="max_price" min="0" max="500" value="500" class="form-control" style="margin-bottom: 0.5rem;">
+                                        <div class="price-display" id="price-display">$0 - $500</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label">Color</label>
+                                    <select name="color" class="form-control">
+                                        <option value="">All Colors</option>
+                                        <option value="Black">Black</option>
+                                        <option value="White">White</option>
+                                        <option value="Gray">Gray</option>
+                                        <option value="Blue">Blue</option>
+                                        <option value="Navy">Navy</option>
+                                        <option value="Red">Red</option>
+                                        <option value="Brown">Brown</option>
+                                        <option value="Beige">Beige</option>
+                                        <option value="Green">Green</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label">Sort By</label>
+                                    <select name="sort" class="form-control">
+                                        <option value="newest">Newest First</option>
+                                        <option value="price-low">Price: Low to High</option>
+                                        <option value="price-high">Price: High to Low</option>
+                                        <option value="name">Name A-Z</option>
+                                        <option value="featured">Featured First</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-actions" style="margin-top: 1rem;">
+                            <button type="button" id="apply-filters" class="btn btn-primary">
+                                <i class="fas fa-filter"></i> Apply Filters
+                            </button>
+                            <button type="reset" id="reset-filters" class="btn btn-secondary">
+                                <i class="fas fa-undo"></i> Reset
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filtered Products Section -->
+        <section class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="results-title">All Products</h2>
+                    <p class="section-subtitle" id="results-count">Showing all available products</p>
+                </div>
+                
+                <div class="product-grid" id="filtered-products">
+                    <!-- Filtered products will be displayed here -->
+                    <div class="spinner"></div>
+                </div>
+                
+                <div class="text-center mt-4" id="load-more-container" style="display: none;">
+                    <button id="load-more" class="btn btn-secondary">Load More Products</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Velvet Vogue</h3>
+                    <p>Premium fashion for the modern lifestyle. Discover your style with our curated collection of trendy and elegant pieces.</p>
+                    <div class="social-links" style="margin-top: 1rem;">
+                        <a href="#" style="margin-right: 1rem; font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
+                        <a href="#" style="margin-right: 1rem; font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="margin-right: 1rem; font-size: 1.5rem;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="margin-right: 1rem; font-size: 1.5rem;"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="../index.html">Home</a>
+                    <a href="categories.html">Categories</a>
+                    <a href="products.html">Products</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="account.html">My Account</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Customer Service</h3>
+                    <a href="#">Shipping Info</a>
+                    <a href="#">Returns & Exchanges</a>
+                    <a href="#">Size Guide</a>
+                    <a href="#">FAQ</a>
+                    <a href="contact.html">Support</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 11/2 Dematagoda place, Colombo-09, Colombo</p>
+                    <p><i class="fas fa-phone"></i> +94 77 867 2554</p>
+                    <p><i class="fas fa-envelope"></i> info@velvetvogue.com</p>
+                    <p><i class="fas fa-clock"></i> Mon-Sat: 9AM-8PM, Sun: 10AM-6PM</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Velvet Vogue. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+    <script>
+        let allProducts = [];
+        let filteredProducts = [];
+        let allCategories = [];
+        let currentPage = 1;
+        const productsPerPage = 12;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCategories();
+            loadAllProducts();
+            initializeFilters();
+            checkURLParameters();
+        });
+
+        function loadCategories() {
+            fetch('../php/products.php?action=get_categories')
+                .then(response => response.json())
+                .then(categories => {
+                    allCategories = categories;
+                    displayCategories(categories);
+                    populateCategorySelect(categories);
+                })
+                .catch(error => {
+                    console.error('Error loading categories:', error);
+                    document.getElementById('categories-container').innerHTML = '<p class="text-center">Error loading categories</p>';
+                });
+        }
+
+        function loadAllProducts() {
+            fetch('../php/products.php?action=get_all')
+                .then(response => response.json())
+                .then(products => {
+                    allProducts = products;
+                    filteredProducts = products;
+                    displayFilteredProducts();
+                })
+                .catch(error => {
+                    console.error('Error loading products:', error);
+                    document.getElementById('filtered-products').innerHTML = '<p class="text-center">Error loading products</p>';
+                });
+        }
+
+        function displayCategories(categories) {
+            const container = document.getElementById('categories-container');
+            
+            if (categories.length === 0) {
+                container.innerHTML = '<p class="text-center">No categories found</p>';
+                return;
+            }
+
+            const categoriesHTML = categories.map(category => `
+                <div class="card category-card fade-in" onclick="selectCategory(${category.id})">
+                    <div class="category-icon" style="padding: 2rem; text-align: center; background: var(--background-light);">
+                        <i class="fas ${getCategoryIcon(category.name)}" style="font-size: 3rem; color: var(--accent-color);"></i>
+                    </div>
+                    <div class="card-body text-center">
+                        <h4 class="card-title">${category.name}</h4>
+                        <p class="card-text">${category.description || 'Explore our ' + category.name.toLowerCase() + ' collection'}</p>
+                        <button class="btn btn-primary">Browse ${category.name}</button>
+                    </div>
+                </div>
+            `).join('');
+
+            container.innerHTML = categoriesHTML;
+        }
+
+        function getCategoryIcon(categoryName) {
+            const icons = {
+                'T-Shirts': 'fa-tshirt',
+                'Jeans': 'fa-jeans',
+                'Dresses': 'fa-dress',
+                'Jackets': 'fa-jacket',
+                'Shoes': 'fa-shoe-prints',
+                'Accessories': 'fa-gem',
+                'Shirts': 'fa-shirt',
+                'Pants': 'fa-pants',
+                'Skirts': 'fa-skirt',
+                'Suits': 'fa-user-tie'
+            };
+            return icons[categoryName] || 'fa-tag';
+        }
+
+        function populateCategorySelect(categories) {
+            const categorySelect = document.getElementById('category-select');
+            categories.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category.id;
+                option.textContent = category.name;
+                categorySelect.appendChild(option);
+            });
+        }
+
+        function selectCategory(categoryId) {
+            // Set the category in the filter form
+            document.getElementById('category-select').value = categoryId;
+            // Apply filters to show products from this category
+            applyFilters();
+            // Scroll to the filtered products section
+            document.getElementById('filtered-products').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function initializeFilters() {
+            // Price range slider
+            const priceRange = document.getElementById('price-range');
+            const priceDisplay = document.getElementById('price-display');
+            
+            priceRange.addEventListener('input', function() {
+                priceDisplay.textContent = `$0 - $${this.value}`;
+            });
+
+            // Apply filters button
+            document.getElementById('apply-filters').addEventListener('click', applyFilters);
+
+            // Reset filters button
+            document.getElementById('reset-filters').addEventListener('click', resetFilters);
+
+            // Auto-apply filters on change
+            const filterInputs = document.querySelectorAll('#filter-form select, #filter-form input');
+            filterInputs.forEach(input => {
+                input.addEventListener('change', applyFilters);
+            });
+
+            // Load more button
+            document.getElementById('load-more').addEventListener('click', loadMoreProducts);
+        }
+
+        function applyFilters() {
+            const formData = new FormData(document.getElementById('filter-form'));
+            const filters = Object.fromEntries(formData.entries());
+
+            // Filter products based on criteria
+            filteredProducts = allProducts.filter(product => {
+                let matches = true;
+
+                // Category filter
+                if (filters.category && product.category_id != filters.category) {
+                    matches = false;
+                }
+
+                // Gender filter
+                if (filters.gender && product.gender !== filters.gender) {
+                    matches = false;
+                }
+
+                // Size filter
+                if (filters.size) {
+                    const sizes = product.sizes ? product.sizes.split(',').map(s => s.trim()).filter(s => s) : [];
+                    if (!sizes.includes(filters.size)) {
+                        matches = false;
+                    }
+                }
+
+                // Color filter
+                if (filters.color) {
+                    const colors = product.colors ? product.colors.split(',').map(c => c.trim()).filter(c => c) : [];
+                    if (!colors.includes(filters.color)) {
+                        matches = false;
+                    }
+                }
+
+                // Price filter
+                if (filters.max_price) {
+                    const price = parseFloat(product.price);
+                    if (price > parseFloat(filters.max_price)) {
+                        matches = false;
+                    }
+                }
+
+                return matches;
+            });
+
+            // Sort products
+            if (filters.sort) {
+                filteredProducts.sort((a, b) => {
+                    switch (filters.sort) {
+                        case 'newest':
+                            return new Date(b.created_at) - new Date(a.created_at);
+                        case 'price-low':
+                            return parseFloat(a.price) - parseFloat(b.price);
+                        case 'price-high':
+                            return parseFloat(b.price) - parseFloat(a.price);
+                        case 'name':
+                            return a.name.localeCompare(b.name);
+                        case 'featured':
+                            return (b.is_featured ? 1 : 0) - (a.is_featured ? 1 : 0);
+                        default:
+                            return 0;
+                    }
+                });
+            }
+
+            currentPage = 1;
+            displayFilteredProducts();
+            updateResultsInfo();
+        }
+
+        function resetFilters() {
+            document.getElementById('filter-form').reset();
+            document.getElementById('price-display').textContent = '$0 - $500';
+            filteredProducts = allProducts;
+            currentPage = 1;
+            displayFilteredProducts();
+            updateResultsInfo();
+        }
+
+        function displayFilteredProducts() {
+            const container = document.getElementById('filtered-products');
+            const startIndex = (currentPage - 1) * productsPerPage;
+            const endIndex = startIndex + productsPerPage;
+            const productsToShow = filteredProducts.slice(0, endIndex);
+
+            if (productsToShow.length === 0) {
+                container.innerHTML = '<p class="text-center" style="grid-column: 1 / -1;">No products found matching your criteria.</p>';
+                document.getElementById('load-more-container').style.display = 'none';
+                return;
+            }
+
+            const productsHTML = productsToShow.map(product => {
+                // Parse sizes and colors from comma-separated strings
+                const sizes = product.sizes ? product.sizes.split(',').map(s => s.trim()).filter(s => s) : [];
+                const colors = product.colors ? product.colors.split(',').map(c => c.trim()).filter(c => c) : [];
+                
+                return `
+                    <div class="card product-card fade-in">
+                        ${product.is_featured ? '<div class="product-badge">Featured</div>' : ''}
+                        ${product.is_new_arrival ? '<div class="product-badge new">New</div>' : ''}
+                        ${product.is_on_sale ? '<div class="product-badge sale">Sale</div>' : ''}
+                        
+                        <img src="../${product.image_url}" alt="${product.name}" class="card-img" loading="lazy">
+                        
+                        <div class="card-body">
+                            <h5 class="card-title">${product.name}</h5>
+                            <p class="card-text">${product.description.substring(0, 100)}...</p>
+                            <p class="category-badge" style="color: var(--accent-color); font-size: 0.9rem; font-weight: 500;">
+                                ${product.category_name || 'Uncategorized'} • ${product.gender}
+                            </p>
+                            
+                            <div class="product-options mb-2">
+                                ${sizes.length > 0 ? `
+                                    <select id="size-${product.id}" class="form-control mb-1" style="font-size: 0.9rem;">
+                                        <option value="">Select Size</option>
+                                        ${sizes.map(size => `<option value="${size}">${size}</option>`).join('')}
+                                    </select>
+                                ` : ''}
+                                
+                                ${colors.length > 0 ? `
+                                    <select id="color-${product.id}" class="form-control mb-1" style="font-size: 0.9rem;">
+                                        <option value="">Select Color</option>
+                                        ${colors.map(color => `<option value="${color}">${color}</option>`).join('')}
+                                    </select>
+                                ` : ''}
+                            </div>
+                            
+                            <div class="card-price">
+                                ${product.is_on_sale && product.sale_price ? 
+                                    `$${product.sale_price} <span class="original-price">$${product.price}</span>` : 
+                                    `$${product.price}`
+                                }
+                            </div>
+                            
+                            <button class="btn btn-primary add-to-cart" data-product-id="${product.id}">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            container.innerHTML = productsHTML;
+
+            // Show/hide load more button
+            const loadMoreContainer = document.getElementById('load-more-container');
+            if (endIndex < filteredProducts.length) {
+                loadMoreContainer.style.display = 'block';
+            } else {
+                loadMoreContainer.style.display = 'none';
+            }
+
+            // Re-initialize cart functionality
+            initCartFunctionality();
+        }
+
+        function loadMoreProducts() {
+            currentPage++;
+            displayFilteredProducts();
+        }
+
+        function updateResultsInfo() {
+            const titleElement = document.getElementById('results-title');
+            const countElement = document.getElementById('results-count');
+            
+            const activeCategory = document.getElementById('category-select').value;
+            const categoryName = activeCategory ? 
+                allCategories.find(cat => cat.id == activeCategory)?.name : 
+                'All Products';
+            
+            titleElement.textContent = categoryName;
+            countElement.textContent = `Showing ${filteredProducts.length} product${filteredProducts.length !== 1 ? 's' : ''}`;
+        }
+
+        function checkURLParameters() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const gender = urlParams.get('gender');
+            const category = urlParams.get('category');
+            
+            if (gender) {
+                document.querySelector(`select[name="gender"]`).value = gender;
+            }
+            
+            if (category) {
+                document.getElementById('category-select').value = category;
+            }
+            
+            if (gender || category) {
+                // Small delay to ensure products are loaded
+                setTimeout(() => {
+                    applyFilters();
+                }, 500);
+            }
+        }
+    </script>
+
+    <style>
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .category-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .price-range-container {
+            position: relative;
+        }
+
+        .price-display {
+            text-align: center;
+            font-weight: 500;
+            color: var(--accent-color);
+            font-size: 0.9rem;
+        }
+
+        .filter-form {
+            margin-bottom: 2rem;
+        }
+
+        .filter-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .categories-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .filter-actions {
+                flex-direction: column;
+            }
+            
+            .filter-actions .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</body>
+</html>
