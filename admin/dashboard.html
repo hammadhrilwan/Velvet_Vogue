@@ -267,7 +267,8 @@
                 <!-- Customer Controls -->
                 <div class="customer-controls" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; gap: 1rem; flex-wrap: wrap;">
                     <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                        <input type="text" id="customer-search" placeholder="Search customers..." style="padding: 0.5rem; border: 1px solid var(--border-color); border-radius: var(--border-radius); min-width: 250px;">
+                        <input type="text" id="customer-search" placeholder="Search customers..." style="padding: 0.5rem; border: 1px solid var(--border-color); 
+                        border-radius: var(--border-radius); min-width: 250px;">
                         <select id="customer-status-filter" style="padding: 0.5rem; border: 1px solid var(--border-color); border-radius: var(--border-radius);">
                             <option value="">All Status</option>
                             <option value="active">Active</option>
@@ -553,14 +554,16 @@
                     </td>
                     <td style="padding: 1rem;">${product.category_name || 'Uncategorized'}</td>
                     <td style="padding: 1rem;">
-                        <span class="badge" style="padding: 0.25rem 0.5rem; border-radius: var(--border-radius-sm); font-size: 0.8rem; font-weight: 500; background: ${product.gender === 'Men' ? '#007bff' : product.gender === 'Women' ? '#e91e63' : product.gender === 'Kids' ? '#ff9800' : '#6c757d'}; color: white;">
+                        <span class="badge" style="padding: 0.25rem 0.5rem; border-radius: var(--border-radius-sm); font-size: 0.8rem; font-weight: 500; 
+                        background: ${product.gender === 'Men' ? '#007bff' : product.gender === 'Women' ? '#e91e63' : product.gender === 'Kids' ? '#ff9800' : '#6c757d'}; color: white;">
                             ${product.gender || 'Unisex'}
                         </span>
                     </td>
                     <td style="padding: 1rem; font-weight: 600;">$${product.price}</td>
                     <td style="padding: 1rem;">${product.stock_quantity}</td>
                     <td style="padding: 1rem;">
-                        <span class="status-badge ${product.stock_quantity > 0 ? 'active' : 'inactive'}" style="padding: 0.25rem 0.75rem; border-radius: var(--border-radius-sm); font-size: 0.8rem; font-weight: 500; ${product.stock_quantity > 0 ? 'background: var(--success-color); color: white;' : 'background: var(--error-color); color: white;'}">
+                        <span class="status-badge ${product.stock_quantity > 0 ? 'active' : 'inactive'}" style="padding: 0.25rem 0.75rem; border-radius: var(--border-radius-sm); 
+                            font-size: 0.8rem; font-weight: 500; ${product.stock_quantity > 0 ? 'background: var(--success-color); color: white;' : 'background: var(--error-color); color: white;'}">
                             ${product.stock_quantity > 0 ? 'Active' : 'Out of Stock'}
                         </span>
                     </td>
