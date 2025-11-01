@@ -151,29 +151,11 @@ a:hover {
     padding: var(--spacing-xs) var(--spacing-sm);
     border-radius: var(--border-radius-sm);
     transition: all 0.3s ease;
-    position: relative;
 }
 
 .nav-link:hover {
     background: var(--background-light);
     color: var(--secondary-color);
-}
-
-.nav-link.active {
-    color: var(--secondary-color);
-    font-weight: 600;
-}
-
-.nav-link.active::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60%;
-    height: 2px;
-    background: var(--accent-color);
-    border-radius: 1px;
 }
 
 .nav-icons {
